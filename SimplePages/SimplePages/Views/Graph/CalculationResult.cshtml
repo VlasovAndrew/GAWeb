@@ -1,0 +1,14 @@
+﻿@model GeneticAlgorithm.Entities.AlgorithmResult
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Результаты вычислений";
+}
+
+<div class="row justify-content-center mt-4">
+    <div class="col-lg-5 col-md-5 bg-white p-3">
+        <h2> Результаты анализа </h2>
+        <h3> Время работы: @Model.Time </h3>
+        <h3> Радиус графа: @Model.R </h3>
+        <h3> Центр графа : @Model.Center </h3>
+    </div>
+</div>
