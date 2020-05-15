@@ -1,10 +1,11 @@
-﻿using GeneticAlgorithm.Entities;
+﻿using GA;
+using GeneticAlgorithm;
+using GeneticAlgorithm.Entities;
 using GeneticAlgorithmWEB.BLL.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Diagnostics;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,42 +13,41 @@ namespace GeneticAlgorithmWEB.BLL
 {
     public class AlgorithmWork : IAlgorithmWork
     {
-        [DllImport(@"GeneticCore.dll")]
-        public static extern AlgorithmRes startGeneticAlgorithm(int n, int m, IntPtr e, int eSize);
+        private readonly IGraphBL _graphBL;
+        private double _fixedPM = 0.4;
+        private double _fixedPC = 0.4;
+        private int _fixedPopSize = 30;
+        private int _testCount = 10;
 
-        [DllImport(@"GeneticCore.dll")]
-        public static extern IntPtr createArray(int n);
-
-        [StructLayout(LayoutKind.Sequential)]
-        unsafe public struct AlgorithmRes
+        public AlgorithmWork(IGraphBL graphBL)
         {
-            public int r;
-            public double time;
-            public int center;
-        };
-
-        public AlgorithmResult FindCentralVertex(Graph graph)
-        {
-            List<int> edgesInLine = new List<int>();
-            foreach (var e in graph.Edges)
-            {
-                edgesInLine.Add(e.Item1);
-                edgesInLine.Add(e.Item2);
-            }
-            
-            IntPtr edges = createArray(edgesInLine.Count);  
-            Marshal.Copy(edgesInLine.ToArray(), 0, edges, edgesInLine.Count);
-            AlgorithmRes res = startGeneticAlgorithm(graph.N, graph.M, edges, edgesInLine.Count);
-
-            return new AlgorithmResult {
-                R = res.r,
-                Time = res.time,
-                Center = res.center,
-            };
+            _graphBL = graphBL;
         }
 
-        public string WorkDir() {
-            return Directory.GetCurrentDirectory();
+        public FindingVertexResponse FindCentralVertex(Graph graph)
+        {
+            GeneticAlgorithmCore ga = new GeneticAlgorithmCore(graph, _fixedPopSize, _fixedPM, _fixedPC);
+            return ga.StartAlgorithm();
+        }
+
+        public ResearchAlgorithmResponse ResearchAlgorithm(ResearchRequest param) {
+            Graph graph = _graphBL.GetById(param.GraphId);
+            double avgTime = 0.0;
+            int error = 0;
+            GeneticAlgorithmCore ga = new GeneticAlgorithmCore(graph, param.PopulationSize, param.Pm, param.Pc);
+            for (int i = 0; i < _testCount; i++) 
+            {
+                FindingVertexResponse algResult = ga.StartAlgorithm();
+                if (algResult.R != graph.R) {
+                    error++;
+                }
+                avgTime += algResult.Time;
+            }
+
+            return new ResearchAlgorithmResponse() {
+                AvgTime = avgTime / _testCount,
+                Error = error / (double)_testCount * 100.0,
+            };
         }
     }
 }

@@ -1,13 +1,16 @@
-﻿<div class="row justify-content-md-center h-100">
-    <div class="col-md-6 col-md-offset-3">
-        @using (Html.BeginForm("AddStudent", "Home", FormMethod.Post))
-        {
-            <input type="text" name="name" />
-            <input type="text" name="address">
-            <button class="btn btn-primary" type="submit">
-                Отправить
-            </button>
-        }
+﻿@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml";    
+}
+
+<div class="row justify-content-md-center h-100">
+    <div class="col-md-6 col-md-offset-3 bg-white">
+        <div>
+            <a href="/research"> Поиск оптимальных параметров </a>
+        </div>
+
+        <div>
+            <a href="/centergraph"> Найти центр графа </a>
+        </div>
     </div>
 </div>
 

@@ -39,5 +39,13 @@ namespace RandomModule
             }
             return prob.ToArray();
         }
+
+        public double NextDouble() {
+            return _rnd.NextDouble();
+        }
+
+        public int NextInt(int x) {
+            return _rnd.Next(x);
+        }
     }
 }

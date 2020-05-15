@@ -4,6 +4,7 @@ using RandomModule;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 namespace GA
 {
@@ -15,80 +16,87 @@ namespace GA
         private int _step;
 
         private Stopwatch _watch;
+
         private List<int> _population;
-        private Random _rnd;
+        private GraphContext _graphContext;
+        
         private RandomWorker _rndWorker;
 
         public GeneticAlgorithmCore(Graph graph, int populationSize, double pm, double pc)
         {
-            _graph = graph;
             _step = 20;
+            _graph = graph;
             _pm = pm;
             _pc = pc;
+            _populationSize = populationSize;
 
             _watch = new Stopwatch();
-            _rnd = new Random();
             _rndWorker = new RandomWorker();
         }
 
-        public double StartAlgorithm() {
-            GraphContext graphContext = new GraphContext(_graph);
-            InitPopulation();
+        public FindingVertexResponse StartAlgorithm() {
+            Init();
             _watch.Start();
             for (int i = 0; i < _step; i++)
             {
-                EvolutionStep(graphContext);
+                EvolutionStep();
             }
             _watch.Stop();
-            return _watch.ElapsedMilliseconds;
+
+            FindingVertexResponse res = new FindingVertexResponse() {
+                Time = _watch.ElapsedMilliseconds / (double)1000,  
+            };
+            GetBestResult(res);
+            return res;
         }
 
-        private void InitPopulation() {
-            _population = new List<int>(_populationSize);
-            for (int i = 0; i < _population.Count; i++) {
-                _population[i] = _rnd.Next(_graph.N);
+        private void Init() {
+            _graphContext = new GraphContext(_graph);
+            _population = new List<int>();
+            for (int i = 0; i < _populationSize; i++) {
+                _population.Add(_rndWorker.NextInt(_graph.N));
             }
         }
 
-        private void EvolutionStep(GraphContext graphContext) {
-            Crossing(graphContext);
-            Mutation(graphContext);
-            Selection(graphContext);
+        private void EvolutionStep() {
+            Crossing();
+            Mutation();
+            Selection();
         }
 
-        private void Mutation(GraphContext graphContext) {
+        private void Mutation() {
             for (int i = 0; i < _population.Count; i++)
             {
                 int v = _population[i];
-                double condition = _rnd.NextDouble();
+                double condition = _rndWorker.NextDouble();
                 if (condition < _pm) {
-                    int[] neighbors = graphContext.GetNeighbors(v);
-                    int index = _rnd.Next(neighbors.Length);
+                    int[] neighbors = _graphContext.GetNeighbors(v);
+                    int index = _rndWorker.NextInt(neighbors.Length);
                     _population[i] = neighbors[index];
                 }
             }
         }
 
-        private void Crossing(GraphContext graphContext) {
+        private void Crossing() {
             List<int> crossed = new List<int>();
             for (int i = 0; i < _population.Count; i++) {
-                if (_rnd.NextDouble() <= _pc) {
-                    int ind1 = _rnd.Next(_population.Count);
-                    int ind2 = _rnd.Next(_population.Count);
+                if (_rndWorker.NextDouble() <= _pc) {
+                    int ind1 = _rndWorker.NextInt(_population.Count);
+                    int ind2 = _rndWorker.NextInt(_population.Count);
                     int x = _population[ind1], y = _population[ind2];
-                    int[] path = graphContext.GetPath(x, y);
+                    int[] path = _graphContext.GetPath(x, y);
                     crossed.Add(path[path.Length / 2]);
                 }
             }
             _population.AddRange(crossed);
         }
 
-        private void Selection(GraphContext graphContext)
+        private void Selection()
         {
             List<int> e = new List<int>();
             foreach (var v in _population)
             {
-                e.Add(graphContext.GetEccentricity(v));
+                e.Add(_graphContext.GetEccentricity(v));
             }
             double[] prob = _rndWorker.InvertProb(e.ToArray());
             List<int> selectedPopulation = new List<int>();
@@ -96,6 +104,23 @@ namespace GA
                 selectedPopulation.Add(_rndWorker.Choice(_population.ToArray(), prob));
             }
             _population = selectedPopulation;   
+        }
+
+        private void GetBestResult(FindingVertexResponse res) {
+            List<int> e = new List<int>();
+            foreach (var v in _population)
+            {
+                e.Add(_graphContext.GetEccentricity(v));
+            }
+            int R = e.Min();
+            HashSet<int> resVertex = new HashSet<int>();
+            for (int i = 0; i < e.Count; i++) {
+                if (e[i] == R) {
+                    resVertex.Add(_population[i]);
+                }
+            }
+            res.Center = resVertex.ToArray();
+            res.R = R;
         }
     }
 }

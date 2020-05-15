@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace GeneticAlgorithm.Entities
 {
-    public class AlgorithmResult
+    public class FindingVertexResponse
     {
-        public int Center { get; set; }
+        public int[] Center { get; set; }
         public int R { get; set; }
         public double Time { get; set; }
     }

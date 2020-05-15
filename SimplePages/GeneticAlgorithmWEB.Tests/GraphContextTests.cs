@@ -9,26 +9,26 @@ namespace GeneticAlgorithmWEB.Tests
     [TestClass]
     public class GraphContextTests
     {
-        private Graph CreateChain(int n) {
+        private GraphDTO CreateChain(int n) {
             List<Tuple<int, int>> edges = new List<Tuple<int, int>>();
             for (int i = 0; i + 1 < n; i++) {
                 edges.Add(Tuple.Create(i, i + 1));
             }
-            return new Graph {
+            return new GraphDTO {
                 N = n,
                 M = edges.Count,
                 Edges = edges,
             };
         }
 
-        private Graph CreateFullGraph(int n) {
+        private GraphDTO CreateFullGraph(int n) {
             List<Tuple<int, int>> edges = new List<Tuple<int, int>>();
             for (int i = 0; i < n; i++) {
                 for (int j = i + 1; j < n; j++) {
                     edges.Add(Tuple.Create(i, j));
                 }
             }
-            return new Graph() {
+            return new GraphDTO() {
                 N = n,
                 M = edges.Count,
                 Edges = edges,

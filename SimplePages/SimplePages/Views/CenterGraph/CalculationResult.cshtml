@@ -1,4 +1,4 @@
-﻿@model GeneticAlgorithm.Entities.AlgorithmResult
+﻿@model GeneticAlgorithm.Entities.FindingVertexResponse
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Результаты вычислений";
@@ -9,6 +9,11 @@
         <h2> Результаты анализа </h2>
         <h3> Время работы: @Model.Time </h3>
         <h3> Радиус графа: @Model.R </h3>
-        <h3> Центр графа : @Model.Center </h3>
+        <h3> Центр графа : 
+            @foreach (var v in Model.Center)
+            {
+                <span>@v</span>
+            }
+        </h3>
     </div>
 </div>

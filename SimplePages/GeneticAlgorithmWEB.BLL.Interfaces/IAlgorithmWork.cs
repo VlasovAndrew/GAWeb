@@ -9,7 +9,7 @@ namespace GeneticAlgorithmWEB.BLL.Interfaces
 {
     public interface IAlgorithmWork
     {
-        AlgorithmResult FindCentralVertex(Graph graph);
-        string WorkDir();
+        FindingVertexResponse FindCentralVertex(Graph graph);
+        ResearchAlgorithmResponse ResearchAlgorithm(ResearchRequest param);
     }
 }

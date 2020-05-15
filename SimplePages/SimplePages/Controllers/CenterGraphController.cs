@@ -1,4 +1,5 @@
 ﻿using GeneticAlgorithm.Entities;
+using GeneticAlgorithmWEB.BLL;
 using GeneticAlgorithmWEB.BLL.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -8,14 +9,14 @@ using System.Web.Mvc;
 
 namespace SimplePages.Controllers
 {
-    public class GraphController : Controller
+    public class CenterGraphController : Controller
     {
         private readonly IAlgorithmWork _algorithmWork;
-        private readonly IGraphParser _graphParser;
+        private readonly IGraphBL _graphBL;
 
-        public GraphController(IAlgorithmWork algorithmWork, IGraphParser graphParser) {
+        public CenterGraphController(IAlgorithmWork algorithmWork, IGraphBL graphBL) {
             _algorithmWork = algorithmWork;
-            _graphParser = graphParser;
+            _graphBL = graphBL;
         }
 
         [HttpGet]
@@ -29,24 +30,20 @@ namespace SimplePages.Controllers
         {
             if (upload == null) 
             {
-                return View("~/Views/Shared/Error.cshtml");
+                return View("~/Views/Shared/Error.cshtml", model: "Файл не был выбран");
             }
             try
             {
                 string[] fileLines = ReadFile(upload.InputStream);
-                Graph graph = _graphParser.ParseSimpleTxtFormat(fileLines);
-                AlgorithmResult algorithmResult = _algorithmWork.FindCentralVertex(graph);
+                Graph graph = GraphParser.ParseSimpleTxtFormat(fileLines);
+                FindingVertexResponse algorithmResult = _algorithmWork.FindCentralVertex(graph);
                 return View("CalculationResult", algorithmResult);
             }
             catch (FormatException e)
             {
                 // Add logger
-                return View("~/Views/Shared/Error.cshtml", e);
+                return View("~/Views/Shared/Error.cshtml", model: e.Message);
             }
-        }
-
-        public string GetWorkPath() {
-            return _algorithmWork.WorkDir();
         }
 
         private string[] ReadFile(Stream stream)

@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace GeneticAlgorithm.Entities
 {
-    public class Graph
+    public class Graph : GraphInfo
     {
-        public int N { get; set; }
-        public int M { get; set; }
-        public List<Tuple<int, int>> Edges { get; set; }
+        public ICollection<Edge> Edges { get; set; }
+        public Graph()
+        {
+            Edges = new List<Edge>();
+        }
     }
 }

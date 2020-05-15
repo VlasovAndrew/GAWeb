@@ -10,7 +10,7 @@ namespace SimplePages.Controllers
     {
         public ActionResult Index()
         {
-            return Redirect("/graph");
+            return View("Index");
         }
     }
 }

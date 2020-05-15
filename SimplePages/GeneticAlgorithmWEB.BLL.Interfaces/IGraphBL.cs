@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace GeneticAlgorithmWEB.BLL.Interfaces
 {
-    public interface IGraphParser 
+    public interface IGraphBL
     {
-        Graph ParseSimpleTxtFormat(string[] lines);
+        IEnumerable<GraphInfo> GetAllGraphInfo();
+        Graph GetById(int id);
     }
 }

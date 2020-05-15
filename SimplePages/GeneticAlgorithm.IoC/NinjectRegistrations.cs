@@ -14,7 +14,7 @@ namespace GeneticAlgorithm.IoC
         public override void Load()
         {
             Bind<IAlgorithmWork>().To<AlgorithmWork>();
-            Bind<IGraphParser>().To<GraphParser>();
+            Bind<IGraphBL>().To<GraphBL>();
         }
     }
 }

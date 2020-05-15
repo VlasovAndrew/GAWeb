@@ -17,7 +17,7 @@ namespace GeneticAlgorithmWEB.Tests
                 "0 1",
                 "1 2",
             };
-            Graph graph = _parser.ParseSimpleTxtFormat(textGraph);
+            GraphDTO graph = _parser.ParseSimpleTxtFormat(textGraph);
             Assert.AreEqual(graph.N, 3);
             Assert.AreEqual(graph.M, 2);
         }
@@ -30,7 +30,7 @@ namespace GeneticAlgorithmWEB.Tests
                 "1 2",
                 "0 2",
             };
-            Graph graph = _parser.ParseSimpleTxtFormat(textGraph);
+            GraphDTO graph = _parser.ParseSimpleTxtFormat(textGraph);
             Assert.AreEqual(graph.N, 3);
             Assert.AreEqual(graph.M, 3);
         }
@@ -54,7 +54,7 @@ namespace GeneticAlgorithmWEB.Tests
                 "1 2",
                 "0 2",
             };
-            Graph graph = _parser.ParseSimpleTxtFormat(textGraph);
+            GraphDTO graph = _parser.ParseSimpleTxtFormat(textGraph);
         }
 
         [TestMethod]
@@ -66,7 +66,7 @@ namespace GeneticAlgorithmWEB.Tests
                 "2 3",
                 "1 3 4",
             };
-            Graph graph = _parser.ParseSimpleTxtFormat(textGraph);
+            GraphDTO graph = _parser.ParseSimpleTxtFormat(textGraph);
         }
 
         [TestMethod]
@@ -78,7 +78,7 @@ namespace GeneticAlgorithmWEB.Tests
                 "2 3",
                 "1 ",
             };
-            Graph graph = _parser.ParseSimpleTxtFormat(textGraph);
+            GraphDTO graph = _parser.ParseSimpleTxtFormat(textGraph);
         }
 
         [TestMethod]
@@ -90,7 +90,7 @@ namespace GeneticAlgorithmWEB.Tests
                 "2 3",
                 "1 5",
             };
-            Graph graph = _parser.ParseSimpleTxtFormat(textGraph);
+            GraphDTO graph = _parser.ParseSimpleTxtFormat(textGraph);
         }
 
 
