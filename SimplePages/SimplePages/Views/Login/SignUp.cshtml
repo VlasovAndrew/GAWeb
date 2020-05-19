@@ -1,0 +1,51 @@
+﻿@model GeneticAlgorithm.Entities.Users.CreateUserRequest
+@{
+    ViewBag.Title = "SingUp";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-3 col-md-5 col-sm-8 mt-4 bg-white rounded">
+        <!-- Form -->
+        <form method="post" action="/login/signup" novalidate>
+            <p class="h4 mb-4 mt-4 text-center"> Создать аккаунт </p>
+
+            <div class="form-row">
+                <div class="form-group col-12">
+                    <label for="inputLogin">Логин</label>
+                    <input type="text" class="form-control" name="login"
+                           value="" required />
+                    <div>
+                        @Html.ValidationMessageFor(model => model.Login)
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-12">
+                    <label for="inputPassword">Пароль</label>
+                    <input type="password" class="form-control" name="password"
+                           id="inputPassword" value="" required />
+                    <div class="">
+                        @Html.ValidationMessageFor(model => model.Password)
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-12">
+                    <label for="inputPassword">Повторите пароль</label>
+                    <input type="password" class="form-control" name="confirmPassword"
+                           id="inputPassword" value="" required />
+                    <div class="">
+                        @Html.ValidationMessageFor(model => model.ConfirmPassword)
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                @Html.ValidationMessage("LOGIN_PASSWORD")
+            </div>
+            <button type="submit" class="btn btn-primary mb-4"> Войти </button>
+        </form>
+    </div>
+</div>

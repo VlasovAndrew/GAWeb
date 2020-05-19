@@ -87,6 +87,7 @@
   <ItemGroup>
     <Compile Include="IAlgorithmWork.cs" />
     <Compile Include="IGraphBL.cs" />
+    <Compile Include="IUserBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

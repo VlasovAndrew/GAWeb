@@ -15,6 +15,7 @@ namespace GeneticAlgorithm.IoC
         {
             Bind<IAlgorithmWork>().To<AlgorithmWork>();
             Bind<IGraphBL>().To<GraphBL>();
+            Bind<IUserBL>().To<UserBL>();
         }
     }
 }

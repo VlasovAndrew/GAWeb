@@ -1,12 +1,13 @@
-﻿using System;
+﻿using GeneticAlgorithm.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GeneticAlgorithm.Entities
+namespace SimplePages.Models
 {
-    public class AlgorithmReultModel
+    public class AlgorithmResultModel
     {
         public ResearchAlgorithmResponse AlgorithmResponse { get; set; }
         public ResearchRequest ResearchRequest { get; set; }

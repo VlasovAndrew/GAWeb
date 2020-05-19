@@ -5,15 +5,25 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net.Http.Headers;
 
 namespace GeneticAlgorithmWEB.BLL
 {
     public class GraphBL : IGraphBL
     {
+        public Graph Add(Graph graph)
+        {
+            using (GraphContext context = new GraphContext()) {
+                Graph res = context.Graphs.Add(graph);
+                context.SaveChanges();
+                return res;
+            }
+        }
+
         public IEnumerable<GraphInfo> GetAllGraphInfo()
         {
             List<GraphInfo> res = new List<GraphInfo>();
-            using (GraphContextDB context = new GraphContextDB()) {
+            using (GraphContext context = new GraphContext()) {
                 foreach (var graph in context.Graphs)
                 {
                     res.Add(new GraphInfo() { 
@@ -28,7 +38,7 @@ namespace GeneticAlgorithmWEB.BLL
         }
 
         public Graph GetById(int id) {
-            using (GraphContextDB context = new GraphContextDB()) {
+            using (GraphContext context = new GraphContext()) {
                 Graph res = context.Graphs
                     .Where(g => g.Id == id)
                     .Include(g => g.Edges)

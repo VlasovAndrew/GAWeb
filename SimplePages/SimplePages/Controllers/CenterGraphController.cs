@@ -1,4 +1,5 @@
 ﻿using GeneticAlgorithm.Entities;
+using GeneticAlgorithm.Entities.Requests;
 using GeneticAlgorithmWEB.BLL;
 using GeneticAlgorithmWEB.BLL.Interfaces;
 using System;
@@ -34,17 +35,35 @@ namespace SimplePages.Controllers
             }
             try
             {
-                string[] fileLines = ReadFile(upload.InputStream);
-                Graph graph = GraphParser.ParseSimpleTxtFormat(fileLines);
+                Graph graph = ReadGraph(upload);
                 FindingVertexResponse algorithmResult = _algorithmWork.FindCentralVertex(graph);
                 return View("CalculationResult", algorithmResult);
             }
             catch (FormatException e)
             {
-                // Add logger
                 return View("~/Views/Shared/Error.cshtml", model: e.Message);
             }
         }
+
+        [HttpGet]
+        public ActionResult AddGraph() {
+            return View("AddGraph");
+        }
+
+        [HttpPost]
+        public ActionResult AddGraph(AddGraphRequest request) {
+            try
+            {
+                Graph graph = ReadGraph(request.Upload);
+                graph.Name = request.Name;
+                _algorithmWork.AddGraph(graph);
+                return Redirect("/");
+            }
+            catch (FormatException e) {
+                return View("~/Views/Shared/Error.cshtml", model: e.Message);
+            }
+        }
+
 
         private string[] ReadFile(Stream stream)
         {
@@ -56,6 +75,11 @@ namespace SimplePages.Controllers
                 lines.Add(line);
             }
             return lines.ToArray();
+        }
+
+        private Graph ReadGraph(HttpPostedFileBase upload) {
+            string[] fileLines = ReadFile(upload.InputStream);
+            return GraphParser.ParseSimpleTxtFormat(fileLines);
         }
     }
 }

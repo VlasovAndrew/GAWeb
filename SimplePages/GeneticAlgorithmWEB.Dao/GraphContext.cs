@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace GeneticAlgorithmWEB.Dao
 {
-    public class GraphContextDB : DbContext
+    public class GraphContext : DbContext
     {
-        static GraphContextDB() {
-            Database.SetInitializer(new ContextInitializer());
+        static GraphContext() {
+            Database.SetInitializer(new GraphContextInitializer());
         }
 
-        public GraphContextDB() : base("GraphConnectionDB") { }
+        public GraphContext() : base("DB") { }
 
         public DbSet<Graph> Graphs { get; set; }
     }

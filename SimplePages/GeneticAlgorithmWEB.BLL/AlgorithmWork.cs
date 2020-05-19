@@ -24,6 +24,18 @@ namespace GeneticAlgorithmWEB.BLL
             _graphBL = graphBL;
         }
 
+        public void AddGraph(Graph graph)
+        {
+            GraphContext context = new GraphContext(graph);
+            if (!context.CheckConnectivity()) {
+                throw new FormatException("Граф должен быть связаным");
+            }
+            ExactAlgorithmCore exactAlgorithm = new ExactAlgorithmCore();
+            int R = exactAlgorithm.FindRadius(context);
+            graph.R = R;
+            _graphBL.Add(graph);
+        }
+
         public FindingVertexResponse FindCentralVertex(Graph graph)
         {
             GeneticAlgorithmCore ga = new GeneticAlgorithmCore(graph, _fixedPopSize, _fixedPM, _fixedPC);

@@ -11,5 +11,6 @@ namespace GeneticAlgorithmWEB.BLL.Interfaces
     {
         FindingVertexResponse FindCentralVertex(Graph graph);
         ResearchAlgorithmResponse ResearchAlgorithm(ResearchRequest param);
+        void AddGraph(Graph graph);
     }
 }

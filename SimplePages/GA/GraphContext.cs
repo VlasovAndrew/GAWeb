@@ -52,6 +52,16 @@ namespace GeneticAlgorithm
             return max;
         }
 
+        public bool CheckConnectivity() {
+            BFS(0);
+            for (int i = 0; i < _n; i++) {
+                if (_path[0, i].Count == 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         public int[] GetPath(int u, int v) {
             if (!_checked[u]) {
                 BFS(u);

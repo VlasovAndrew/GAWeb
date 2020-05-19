@@ -1,21 +1,23 @@
-﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "FindCenter";
+﻿
+@{
+    ViewBag.Title = "AddGraph";
 }
 
     <div class="row justify-content-center mt-4">
         <div class="col-4 bg-white p-3">
-            @using (Html.BeginForm("FindCentralVertex", "CenterGraph"
+            @using (Html.BeginForm("AddGraph", "CenterGraph"
                     , FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
-                <h3 class="text-center"> Поиск центра графа </h3>
+                <h3 class="text-center"> Добавить граф </h3>
                 <div class="form-group">
-                    <label for="">  Файл с графом  </label>
+                    <label for="">  Файл с графом </label>
                     <input type="file" name="upload" accept=".txt" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for=""> Название графа </label>
+                    <input type="text" name="name" class="form-control">
                 </div>
                 <div> <button type="submit" class="btn btn-primary"> Отправить </button> </div>
             }
         </div>
     </div>
-
-

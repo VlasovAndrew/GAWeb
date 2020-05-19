@@ -11,5 +11,6 @@ namespace GeneticAlgorithmWEB.BLL.Interfaces
     {
         IEnumerable<GraphInfo> GetAllGraphInfo();
         Graph GetById(int id);
+        Graph Add(Graph graph); 
     }
 }
