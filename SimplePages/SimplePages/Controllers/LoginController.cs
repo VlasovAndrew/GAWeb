@@ -46,11 +46,13 @@ namespace SimplePages.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult SignUp() {
             return View(signUpViewName);
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult SignUp(CreateUserRequest creatingUser) {
             if (!ModelState.IsValid) {
                 return View(signUpViewName, creatingUser);

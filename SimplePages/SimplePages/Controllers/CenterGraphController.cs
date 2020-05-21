@@ -46,16 +46,26 @@ namespace SimplePages.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult AddGraph() {
             return View("AddGraph");
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult AddGraph(AddGraphRequest request) {
+            if (request.Upload == null) {
+                return View("~/Views/Shared/Error.cshtml", model: "Выберите файл с графом");
+            }
             try
             {
                 Graph graph = ReadGraph(request.Upload);
-                graph.Name = request.Name;
+                if (request.Name == null) {
+                    graph.Name = "Граф пользователя";
+                }
+                else {
+                    graph.Name = request.Name;
+                }
                 _algorithmWork.AddGraph(graph);
                 return Redirect("/");
             }
@@ -77,7 +87,8 @@ namespace SimplePages.Controllers
             return lines.ToArray();
         }
 
-        private Graph ReadGraph(HttpPostedFileBase upload) {
+        private Graph ReadGraph(HttpPostedFileBase upload) 
+        {
             string[] fileLines = ReadFile(upload.InputStream);
             return GraphParser.ParseSimpleTxtFormat(fileLines);
         }

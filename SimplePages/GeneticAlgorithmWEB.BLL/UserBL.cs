@@ -2,6 +2,7 @@
 using GeneticAlgorithmWEB.BLL.Interfaces;
 using GeneticAlgorithmWEB.Dao;
 using System.Linq;
+using System.Web.UI;
 
 namespace GeneticAlgorithmWEB.BLL
 {
@@ -10,7 +11,9 @@ namespace GeneticAlgorithmWEB.BLL
         public User Add(User user)
         {
             using (UserContext context = new UserContext()) {
-                return context.Users.Add(user);
+                User res = context.Users.Add(user);
+                context.SaveChanges();
+                return res;
             }
         }
 

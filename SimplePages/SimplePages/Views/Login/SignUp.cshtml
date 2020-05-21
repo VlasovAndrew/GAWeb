@@ -15,7 +15,8 @@
                     <input type="text" class="form-control" name="login"
                            value="" required />
                     <div>
-                        @Html.ValidationMessageFor(model => model.Login)
+                        @Html.ValidationMessageFor(model => model.Login, "", new { @class = "text-danger" })
+                        @Html.ValidationMessage("LOGIN_PASSWORD", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>
@@ -26,7 +27,7 @@
                     <input type="password" class="form-control" name="password"
                            id="inputPassword" value="" required />
                     <div class="">
-                        @Html.ValidationMessageFor(model => model.Password)
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>
@@ -37,14 +38,11 @@
                     <input type="password" class="form-control" name="confirmPassword"
                            id="inputPassword" value="" required />
                     <div class="">
-                        @Html.ValidationMessageFor(model => model.ConfirmPassword)
+                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>
 
-            <div>
-                @Html.ValidationMessage("LOGIN_PASSWORD")
-            </div>
             <button type="submit" class="btn btn-primary mb-4"> Войти </button>
         </form>
     </div>

@@ -11,11 +11,12 @@
 
             <div class="form-row">
                 <div class="form-group col-12">
-                    <label for="inputLogin">Логин</label>
+                    <label for="inputLogin">Логин</label>        
                     <input type="text" class="form-control" name="login"
                            id="inputLogin" value="" required />
                     <div>
-                        @Html.ValidationMessageFor(model => model.Login)
+                        @Html.ValidationMessageFor(model => model.Login, "", new { @class = "text-danger" })
+                        @Html.ValidationMessage("LOGIN_PASSWORD", new { @class = "text-danger text-center" })
                     </div>
                 </div>
             </div>
@@ -26,15 +27,9 @@
                     <input type="password" class="form-control" name="password"
                            id="inputPassword" value="" required />
                     <div class="">
-                        @Html.ValidationMessageFor(model => model.Password)
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                     </div>
                 </div>
-            </div>
-            <p class="text-center">
-                @Html.ActionLink("Создать аккаунт", "SignUp", "Login")
-            </p>
-            <div>
-                @Html.ValidationMessage("LOGIN_PASSWORD", new { @class = "alert alert-danger" })
             </div>
             <button type="submit" class="btn btn-primary mb-4"> Войти </button>
         </form>
