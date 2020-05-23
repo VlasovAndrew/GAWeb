@@ -74,7 +74,6 @@ namespace SimplePages.Controllers
             }
         }
 
-
         private string[] ReadFile(Stream stream)
         {
             StreamReader reader = new StreamReader(stream);

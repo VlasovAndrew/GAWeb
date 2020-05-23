@@ -5,18 +5,17 @@ Release version: 3.71 (18 mar 2013)
 The 8-bit codepage and sorting file: utf8cyrillic.csf
 The top-level auxiliary file: diploma_pract_Vlasov.aux
 I couldn't open style file gost780uv.bst
----line 32 of file diploma_pract_Vlasov.aux
+---line 37 of file diploma_pract_Vlasov.aux
  : \bibstyle{gost780uv
  :                    }
 I'm skipping whatever remains of this command
-I found no \citation commands---while reading file diploma_pract_Vlasov.aux
 I found no style file---while reading file diploma_pract_Vlasov.aux
 
 Here's how much of BibTeX's memory you used:
- Cites:                 0 out of 750
+ Cites:                 1 out of 750
  Fields:                0 out of 5000
  Hash table:        19001 out of 19000
- Strings:              83 out of 19000
- Free string pool:    512 out of 65000
+ Strings:              85 out of 19000
+ Free string pool:    516 out of 65000
  Wizard functions:      0 out of 3000
-(There were 3 error messages)
+(There were 2 error messages)
