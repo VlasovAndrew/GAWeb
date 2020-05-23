@@ -87,6 +87,8 @@
   <ItemGroup>
     <Compile Include="Graph\GraphInfo.cs" />
     <Compile Include="Requests\AddGraphRequest.cs" />
+    <Compile Include="Requests\LoginUserRequest.cs" />
+    <Compile Include="Response\AlgorithmResultResponse.cs" />
     <Compile Include="Response\FindingVertexResponse.cs" />
     <Compile Include="Graph\Edge.cs" />
     <Compile Include="Graph\Graph.cs" />

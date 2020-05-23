@@ -1,53 +1,46 @@
-﻿using GeneticAlgorithm.Entities;
+﻿using GA;
+using GeneticAlgorithm;
+using GeneticAlgorithm.Entities;
 using GeneticAlgorithmWEB.BLL.Interfaces;
-using GeneticAlgorithmWEB.Dao;
+using GeneticAlgorithmWEB.DAL.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Net.Http.Headers;
 
 namespace GeneticAlgorithmWEB.BLL
 {
     public class GraphBL : IGraphBL
     {
+        private readonly IGraphDao _graphDao;
+        private readonly int _maxN = 2500;
+
+        public GraphBL(IGraphDao graphDao)
+        {
+            _graphDao = graphDao;
+        }
+
         public Graph Add(Graph graph)
         {
-            using (GraphContext context = new GraphContext()) {
-                Graph res = context.Graphs.Add(graph);
-                context.SaveChanges();
-                return res;
+            if (graph.N > _maxN) {
+                throw new FormatException($"Количество вершин в графе должно быть меньше, чем {_maxN}");
+            }            
+            GraphContext context = new GraphContext(graph);
+            if (!context.CheckConnectivity())
+            {
+                throw new FormatException("Граф должен быть связаным");
             }
+            ExactAlgorithmCore exactAlgorithm = new ExactAlgorithmCore();
+            int R = exactAlgorithm.FindRadius(context);
+            graph.R = R;
+            return _graphDao.Add(graph);
         }
 
         public IEnumerable<GraphInfo> GetAllGraphInfo()
         {
-            List<GraphInfo> res = new List<GraphInfo>();
-            using (GraphContext context = new GraphContext()) {
-                foreach (var graph in context.Graphs)
-                {
-                    res.Add(new GraphInfo() { 
-                        Id = graph.Id,
-                        N = graph.N,
-                        M = graph.M,
-                        Name = graph.Name,
-                    });
-                }
-                return res;
-            }
+            return _graphDao.GetAllGraphInfo();
         }
 
         public Graph GetById(int id) {
-            using (GraphContext context = new GraphContext()) {
-                Graph res = context.Graphs
-                    .Where(g => g.Id == id)
-                    .Include(g => g.Edges)
-                    .FirstOrDefault();
-                if (res == null) {
-                    throw new ArgumentException($"Invalid graph id = {id}");
-                }
-                return res;
-            }    
+            return _graphDao.GetById(id);
         }
     }
 }

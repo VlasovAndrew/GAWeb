@@ -8,10 +8,11 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GeneticAlgorithm.Entities.Requests;
 
 namespace GeneticAlgorithmWEB.BLL
 {
-    public class AlgorithmWork : IAlgorithmWork
+    public class Algorithm : IAlgorithm
     {
         private readonly IGraphBL _graphBL;
         private double _fixedPM = 0.4;
@@ -19,21 +20,9 @@ namespace GeneticAlgorithmWEB.BLL
         private int _fixedPopSize = 30;
         private int _testCount = 10;
 
-        public AlgorithmWork(IGraphBL graphBL)
+        public Algorithm(IGraphBL graphBL)
         {
             _graphBL = graphBL;
-        }
-
-        public void AddGraph(Graph graph)
-        {
-            GraphContext context = new GraphContext(graph);
-            if (!context.CheckConnectivity()) {
-                throw new FormatException("Граф должен быть связаным");
-            }
-            ExactAlgorithmCore exactAlgorithm = new ExactAlgorithmCore();
-            int R = exactAlgorithm.FindRadius(context);
-            graph.R = R;
-            _graphBL.Add(graph);
         }
 
         public FindingVertexResponse FindCentralVertex(Graph graph)

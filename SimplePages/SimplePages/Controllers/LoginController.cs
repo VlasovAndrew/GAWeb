@@ -1,4 +1,4 @@
-﻿using GeneticAlgorithm.Entities.Users;
+﻿using GeneticAlgorithm.Entities.Requests;
 using GeneticAlgorithmWEB.BLL.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -13,8 +13,10 @@ namespace SimplePages.Controllers
     public class LoginController : Controller
     {
         private readonly IUserBL _userBL;
-        private string signUpViewName = "SignUp";
-        private string signInViewName = "SignIn";
+        private readonly string signUpViewName = "SignUp";
+        private readonly string signInViewName = "SignIn";
+        private readonly string successSignUpViewName = "SignUpSuccess";
+
         
         public LoginController(IUserBL userBL)
         {
@@ -24,23 +26,21 @@ namespace SimplePages.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            return View(signInViewName, new User());
+            return View(signInViewName, new LoginUserRequest());
         }
 
         [HttpPost]
-        public ActionResult SignIn(User user) {
+        public ActionResult SignIn(LoginUserRequest user) {
             if (!ModelState.IsValid) {
                 return View(signInViewName, user);
             }
-            User currentUser = _userBL.GetByName(user.Login);
-            if (currentUser != null && currentUser.Password == user.Password)
+            if (_userBL.CheckPassword(user))
             {
                 FormsAuthentication.SetAuthCookie(user.Login, true);
                 return Redirect("/");
             }
-            else 
-            {
-                ModelState.AddModelError("LOGIN_PASSWORD", "Неверный логин или пароль");    
+            else {
+                ModelState.AddModelError("LOGIN_PASSWORD", "Неверный логин или пароль");
             }
             return View(signInViewName, user);
         }
@@ -57,17 +57,13 @@ namespace SimplePages.Controllers
             if (!ModelState.IsValid) {
                 return View(signUpViewName, creatingUser);
             }
-            if (_userBL.GetByName(creatingUser.Login) == null)
-            {
-                User user = _userBL.Add(new User()
-                {
-                    Login = creatingUser.Login,
-                    Password = creatingUser.Password,
-                });
-                return SignIn(user);
+            
+            if (!_userBL.UserExists(creatingUser)) {
+                _userBL.Add(creatingUser);
+                return View(successSignUpViewName, creatingUser);
             }
             else {
-                ModelState.AddModelError("LOGIN_PASSWORD", "Пользователь с таким логином уже существует");            
+                ModelState.AddModelError("LOGIN_PASSWORD", "Пользователь с таким логином уже существует");
             }
             return View(signUpViewName, creatingUser);
         }

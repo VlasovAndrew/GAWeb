@@ -1,4 +1,6 @@
-﻿using GeneticAlgorithm.Entities.Users;
+﻿using GeneticAlgorithm.Entities.Requests;
+using GeneticAlgorithm.Entities.Users;
+using GeneticAlgorithmWEB.BLL;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -12,9 +14,14 @@ namespace GeneticAlgorithmWEB.Dao
     {
         protected override void Seed(UserContext context)
         {
-            User user = new User() { 
+            CreateUserRequest userRequest = new CreateUserRequest() { 
                 Login = "admin",
                 Password = "admin"
+            };
+            Encryption encryption = new Encryption();
+            User user = new User() { 
+                Login = userRequest.Login,
+                Password = encryption.CreatePassword(userRequest.Password),
             };
             context.Users.Add(user);
             context.SaveChanges();

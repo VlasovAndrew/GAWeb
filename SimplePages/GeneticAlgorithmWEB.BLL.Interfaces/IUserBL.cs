@@ -1,4 +1,4 @@
-﻿using GeneticAlgorithm.Entities.Users;
+﻿using GeneticAlgorithm.Entities.Requests;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +9,8 @@ namespace GeneticAlgorithmWEB.BLL.Interfaces
 {
     public interface IUserBL
     {
-        User GetById(int id);
-        User GetByName(string name);
-        User Add(User user);
+        void Add(CreateUserRequest user);
+        bool CheckPassword(LoginUserRequest user);
+        bool UserExists(CreateUserRequest user);
     }
 }

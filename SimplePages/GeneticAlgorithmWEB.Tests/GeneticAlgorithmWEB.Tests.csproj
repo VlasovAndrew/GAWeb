@@ -114,9 +114,9 @@
       <Project>{D4EB88EB-A165-4656-A63E-A0DF6E8E1312}</Project>
       <Name>GeneticAlgorithmWEB.BLL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GeneticAlgorithmWEB.Dao\GeneticAlgorithmWEB.Context.csproj">
+    <ProjectReference Include="..\GeneticAlgorithmWEB.Dao\GeneticAlgorithmWEB.Dao.csproj">
       <Project>{AC7CD91C-1C44-4216-A7C8-F70ABBEF0DA7}</Project>
-      <Name>GeneticAlgorithmWEB.Context</Name>
+      <Name>GeneticAlgorithmWEB.Dao</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

@@ -87,7 +87,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AlgorithmWork.cs" />
+    <Compile Include="Algorithm.cs" />
+    <Compile Include="Encryption.cs" />
     <Compile Include="GraphBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserBL.cs" />
@@ -105,9 +106,13 @@
       <Project>{A1A63363-7EFD-4B72-8B54-00C188969CC0}</Project>
       <Name>GeneticAlgorithmWEB.BLL.Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GeneticAlgorithmWEB.Dao\GeneticAlgorithmWEB.Context.csproj">
+    <ProjectReference Include="..\GeneticAlgorithmWEB.DAL.Interfaces\GeneticAlgorithmWEB.DAL.Interfaces.csproj">
+      <Project>{26E46FFA-C4AD-43F2-9B3B-A06CACE36D2F}</Project>
+      <Name>GeneticAlgorithmWEB.DAL.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GeneticAlgorithmWEB.Dao\GeneticAlgorithmWEB.Dao.csproj">
       <Project>{AC7CD91C-1C44-4216-A7C8-F70ABBEF0DA7}</Project>
-      <Name>GeneticAlgorithmWEB.Context</Name>
+      <Name>GeneticAlgorithmWEB.Dao</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

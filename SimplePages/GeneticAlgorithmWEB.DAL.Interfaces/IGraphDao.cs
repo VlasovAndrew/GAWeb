@@ -5,13 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GeneticAlgorithmWEB.BLL.Interfaces
+namespace GeneticAlgorithmWEB.DAL.Interfaces
 {
-    public interface IGraphBL
+    public interface IGraphDao
     {
         IEnumerable<GraphInfo> GetAllGraphInfo();
         Graph GetById(int id);
-        Graph Add(Graph graph); 
-        
+        Graph Add(Graph graph);
     }
 }

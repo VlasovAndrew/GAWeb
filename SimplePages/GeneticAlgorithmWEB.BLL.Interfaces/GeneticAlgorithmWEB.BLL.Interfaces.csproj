@@ -85,7 +85,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IAlgorithmWork.cs" />
+    <Compile Include="IAlgorithm.cs" />
     <Compile Include="IGraphBL.cs" />
     <Compile Include="IUserBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

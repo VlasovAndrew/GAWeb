@@ -1,4 +1,5 @@
 ﻿using GeneticAlgorithm.Entities;
+using GeneticAlgorithm.Entities.Requests;
 using GeneticAlgorithmWEB.BLL.Interfaces;
 using SimplePages.Models;
 using System.Collections.Generic;
@@ -9,9 +10,9 @@ namespace SimplePages.Controllers
     public class ResearchController : Controller
     {
         private readonly IGraphBL _graphBL;
-        private readonly IAlgorithmWork _algorithmWork;
+        private readonly IAlgorithm _algorithmWork;
 
-        public ResearchController(IGraphBL graphBL, IAlgorithmWork algorithmWork)
+        public ResearchController(IGraphBL graphBL, IAlgorithm algorithmWork)
         {
             _graphBL = graphBL;
             _algorithmWork = algorithmWork;

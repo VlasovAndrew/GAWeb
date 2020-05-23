@@ -97,6 +97,14 @@
       <Project>{D4EB88EB-A165-4656-A63E-A0DF6E8E1312}</Project>
       <Name>GeneticAlgorithmWEB.BLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GeneticAlgorithmWEB.DAL.Interfaces\GeneticAlgorithmWEB.DAL.Interfaces.csproj">
+      <Project>{26E46FFA-C4AD-43F2-9B3B-A06CACE36D2F}</Project>
+      <Name>GeneticAlgorithmWEB.DAL.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GeneticAlgorithmWEB.Dao\GeneticAlgorithmWEB.Dao.csproj">
+      <Project>{AC7CD91C-1C44-4216-A7C8-F70ABBEF0DA7}</Project>
+      <Name>GeneticAlgorithmWEB.Dao</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

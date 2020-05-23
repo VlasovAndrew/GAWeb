@@ -1,5 +1,7 @@
 ﻿using GeneticAlgorithmWEB.BLL;
 using GeneticAlgorithmWEB.BLL.Interfaces;
+using GeneticAlgorithmWEB.DAL.Interfaces;
+using GeneticAlgorithmWEB.Dao;
 using Ninject.Modules;
 using System;
 using System.Collections.Generic;
@@ -13,7 +15,9 @@ namespace GeneticAlgorithm.IoC
     {
         public override void Load()
         {
-            Bind<IAlgorithmWork>().To<AlgorithmWork>();
+            Bind<IUserDao>().To<UserDao>();
+            Bind<IGraphDao>().To<GraphDao>();
+            Bind<IAlgorithm>().To<Algorithm>();
             Bind<IGraphBL>().To<GraphBL>();
             Bind<IUserBL>().To<UserBL>();
         }

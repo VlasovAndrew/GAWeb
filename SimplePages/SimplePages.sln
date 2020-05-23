@@ -31,7 +31,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomModule", "RandomModul
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{E632C32B-DBD6-472D-B478-C8308FA744F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneticAlgorithmWEB.Context", "GeneticAlgorithmWEB.Dao\GeneticAlgorithmWEB.Context.csproj", "{AC7CD91C-1C44-4216-A7C8-F70ABBEF0DA7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneticAlgorithmWEB.Dao", "GeneticAlgorithmWEB.Dao\GeneticAlgorithmWEB.Dao.csproj", "{AC7CD91C-1C44-4216-A7C8-F70ABBEF0DA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneticAlgorithmWEB.DAL.Interfaces", "GeneticAlgorithmWEB.DAL.Interfaces\GeneticAlgorithmWEB.DAL.Interfaces.csproj", "{26E46FFA-C4AD-43F2-9B3B-A06CACE36D2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneticAlgorithmWEB.Encryption", "GeneticAlgorithmWEB.Encryption\GeneticAlgorithmWEB.Encryption.csproj", "{4DD820A1-085F-4288-82D4-FFF729967742}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +79,14 @@ Global
 		{AC7CD91C-1C44-4216-A7C8-F70ABBEF0DA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC7CD91C-1C44-4216-A7C8-F70ABBEF0DA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC7CD91C-1C44-4216-A7C8-F70ABBEF0DA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26E46FFA-C4AD-43F2-9B3B-A06CACE36D2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26E46FFA-C4AD-43F2-9B3B-A06CACE36D2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26E46FFA-C4AD-43F2-9B3B-A06CACE36D2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26E46FFA-C4AD-43F2-9B3B-A06CACE36D2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DD820A1-085F-4288-82D4-FFF729967742}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DD820A1-085F-4288-82D4-FFF729967742}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DD820A1-085F-4288-82D4-FFF729967742}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DD820A1-085F-4288-82D4-FFF729967742}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,6 +101,8 @@ Global
 		{DDC1CB53-919E-4D08-8CC8-667DE210950D} = {945592A8-7D8A-49FE-A2E1-E9316D7F859D}
 		{A3A08FFF-92E8-4AB7-B926-BF02F11B28AC} = {3A64C8ED-76A2-4A60-94A9-6110775BF34F}
 		{AC7CD91C-1C44-4216-A7C8-F70ABBEF0DA7} = {E632C32B-DBD6-472D-B478-C8308FA744F9}
+		{26E46FFA-C4AD-43F2-9B3B-A06CACE36D2F} = {E632C32B-DBD6-472D-B478-C8308FA744F9}
+		{4DD820A1-085F-4288-82D4-FFF729967742} = {3A64C8ED-76A2-4A60-94A9-6110775BF34F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C2F44754-3AD0-4276-903D-F309159FBD77}

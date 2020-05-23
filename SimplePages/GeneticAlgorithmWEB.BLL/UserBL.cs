@@ -1,34 +1,49 @@
 ﻿using GeneticAlgorithm.Entities.Users;
 using GeneticAlgorithmWEB.BLL.Interfaces;
+using GeneticAlgorithmWEB.DAL.Interfaces;
 using GeneticAlgorithmWEB.Dao;
 using System.Linq;
 using System.Web.UI;
+using System;
+using System.Security.Cryptography;
+using GeneticAlgorithm.Entities.Requests;
 
 namespace GeneticAlgorithmWEB.BLL
 {
     public class UserBL : IUserBL
     {
-        public User Add(User user)
+        private readonly IUserDao _userDao;
+        private readonly Encryption _encryption;
+        
+        public UserBL(IUserDao userDao)
         {
-            using (UserContext context = new UserContext()) {
-                User res = context.Users.Add(user);
-                context.SaveChanges();
-                return res;
+            _userDao = userDao;
+            _encryption = new Encryption();
+        }
+        public void Add(CreateUserRequest user)
+        {
+            User createdUser = new User() { 
+                Login = user.Login,
+                Password = _encryption.CreatePassword(user.Password),
+            };
+            _userDao.Add(createdUser);
+        }
+
+        public bool CheckPassword(LoginUserRequest user)
+        {
+            User realUser = _userDao.GetByLogin(user.Login);
+            if (realUser == null)
+            {
+                return false;
+            }
+            else 
+            {
+                return _encryption.CheckPassword(realUser.Password, user.Password);
             }
         }
 
-        public User GetById(int id)
-        {
-            using (UserContext context = new UserContext()) {
-                return context.Users.Where(u => u.Id == id).FirstOrDefault();
-            }
-        }
-
-        public User GetByName(string name)
-        {
-            using (UserContext context = new UserContext()) {
-                return context.Users.Where(u => u.Login == name).FirstOrDefault();
-            }
+        public bool UserExists(CreateUserRequest user) {
+            return _userDao.GetByLogin(user.Login) != null;
         }
     }
 }

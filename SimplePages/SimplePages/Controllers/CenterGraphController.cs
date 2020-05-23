@@ -12,10 +12,10 @@ namespace SimplePages.Controllers
 {
     public class CenterGraphController : Controller
     {
-        private readonly IAlgorithmWork _algorithmWork;
+        private readonly IAlgorithm _algorithmWork;
         private readonly IGraphBL _graphBL;
 
-        public CenterGraphController(IAlgorithmWork algorithmWork, IGraphBL graphBL) {
+        public CenterGraphController(IAlgorithm algorithmWork, IGraphBL graphBL) {
             _algorithmWork = algorithmWork;
             _graphBL = graphBL;
         }
@@ -66,7 +66,7 @@ namespace SimplePages.Controllers
                 else {
                     graph.Name = request.Name;
                 }
-                _algorithmWork.AddGraph(graph);
+                _graphBL.Add(graph);
                 return Redirect("/");
             }
             catch (FormatException e) {

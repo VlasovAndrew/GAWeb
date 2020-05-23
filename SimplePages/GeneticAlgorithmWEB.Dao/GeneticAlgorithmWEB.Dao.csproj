@@ -54,9 +54,11 @@
   <ItemGroup>
     <Compile Include="GraphContextInitializer.cs" />
     <Compile Include="GraphContext.cs" />
+    <Compile Include="GraphDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserContext.cs" />
     <Compile Include="UserContextInitializer.cs" />
+    <Compile Include="UserDao.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GA\GA.csproj">
@@ -70,6 +72,14 @@
     <ProjectReference Include="..\GeneticAlgorithmWEB.BLL.Interfaces\GeneticAlgorithmWEB.BLL.Interfaces.csproj">
       <Project>{A1A63363-7EFD-4B72-8B54-00C188969CC0}</Project>
       <Name>GeneticAlgorithmWEB.BLL.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GeneticAlgorithmWEB.DAL.Interfaces\GeneticAlgorithmWEB.DAL.Interfaces.csproj">
+      <Project>{26E46FFA-C4AD-43F2-9B3B-A06CACE36D2F}</Project>
+      <Name>GeneticAlgorithmWEB.DAL.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GeneticAlgorithmWEB.Encryption\GeneticAlgorithmWEB.Encryption.csproj">
+      <Project>{4DD820A1-085F-4288-82D4-FFF729967742}</Project>
+      <Name>GeneticAlgorithmWEB.Encryption</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

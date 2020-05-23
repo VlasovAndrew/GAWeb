@@ -184,7 +184,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AlgorithmResultModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -245,9 +244,11 @@
     <Content Include="Views\Login\SignIn.cshtml" />
     <Content Include="Views\Login\SignUp.cshtml" />
     <Content Include="Views\CenterGraph\AddGraph.cshtml" />
+    <Content Include="Views\Login\SignUpSuccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

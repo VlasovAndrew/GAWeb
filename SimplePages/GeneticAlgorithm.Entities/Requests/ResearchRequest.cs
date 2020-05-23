@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace GeneticAlgorithm.Entities
+namespace GeneticAlgorithm.Entities.Requests
 {
     public class ResearchRequest
     {
