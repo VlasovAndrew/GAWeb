@@ -1,7 +1,7 @@
 ﻿using GeneticAlgorithm.Entities;
 using GeneticAlgorithm.Entities.Requests;
+using GeneticAlgorithm.Entities.Response;
 using GeneticAlgorithmWEB.BLL.Interfaces;
-using SimplePages.Models;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -28,7 +28,7 @@ namespace SimplePages.Controllers
         [HttpPost]
         public ActionResult ResearchAlgorithm(ResearchRequest request) {
             ResearchAlgorithmResponse response = _algorithmWork.ResearchAlgorithm(request);
-            return View("ResearchResult", model: new AlgorithmResultModel() { 
+            return View("ResearchResult", model: new AlgorithmResultResponse() { 
                 ResearchRequest = request,
                 AlgorithmResponse = response,
             });

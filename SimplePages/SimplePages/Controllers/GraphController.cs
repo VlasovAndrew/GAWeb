@@ -10,12 +10,12 @@ using System.Web.Mvc;
 
 namespace SimplePages.Controllers
 {
-    public class CenterGraphController : Controller
+    public class GraphController : Controller
     {
         private readonly IAlgorithm _algorithmWork;
         private readonly IGraphBL _graphBL;
 
-        public CenterGraphController(IAlgorithm algorithmWork, IGraphBL graphBL) {
+        public GraphController(IAlgorithm algorithmWork, IGraphBL graphBL) {
             _algorithmWork = algorithmWork;
             _graphBL = graphBL;
         }
@@ -47,13 +47,13 @@ namespace SimplePages.Controllers
 
         [HttpGet]
         [Authorize]
-        public ActionResult AddGraph() {
-            return View("AddGraph");
+        public ActionResult Add() {
+            return View("Add");
         }
 
         [HttpPost]
         [Authorize]
-        public ActionResult AddGraph(AddGraphRequest request) {
+        public ActionResult Add(AddGraphRequest request) {
             if (request.Upload == null) {
                 return View("~/Views/Shared/Error.cshtml", model: "Выберите файл с графом");
             }

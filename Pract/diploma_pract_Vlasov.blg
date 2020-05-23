@@ -5,7 +5,7 @@ Release version: 3.71 (18 mar 2013)
 The 8-bit codepage and sorting file: utf8cyrillic.csf
 The top-level auxiliary file: diploma_pract_Vlasov.aux
 I couldn't open style file gost780uv.bst
----line 30 of file diploma_pract_Vlasov.aux
+---line 32 of file diploma_pract_Vlasov.aux
  : \bibstyle{gost780uv
  :                    }
 I'm skipping whatever remains of this command
