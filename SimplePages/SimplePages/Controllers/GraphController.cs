@@ -89,7 +89,7 @@ namespace SimplePages.Controllers
         private Graph ReadGraph(HttpPostedFileBase upload) 
         {
             string[] fileLines = ReadFile(upload.InputStream);
-            return GraphParser.ParseSimpleTxtFormat(fileLines);
+            return GraphParser.ParseTxtFormat(fileLines);
         }
     }
 }

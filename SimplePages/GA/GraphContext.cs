@@ -111,13 +111,6 @@ namespace GeneticAlgorithm
                     }
                 }
             }
-
-            foreach (var flag in visited)
-            {
-                if (!flag) {
-                    throw new FormatException("Graph should be connected");
-                }
-            }
         }
     }
 }

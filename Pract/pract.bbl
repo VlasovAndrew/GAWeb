@@ -1,0 +1,20 @@
+\begin{thebibliography}{1}
+\def\selectlanguageifdefined#1{
+\expandafter\ifx\csname date#1\endcsname\relax
+\else\language\csname l@#1\endcsname\fi}
+\ifx\undefined\url\def\url#1{{\small #1}}\else\fi
+\ifx\undefined\BibAuthor\def\BibAuthor#1{\emph{#1}}\else\fi
+\ifx\undefined\BibTitle\def\BibTitle#1{#1}\else\fi
+\ifx\undefined\BibUrl\def\BibUrl#1{\url{#1}}\else\fi
+\ifx\undefined\BibAnnote\def\BibAnnote#1{}\else\fi
+\ifx\undefined\BibSection\def\BibSection#1#2#3{}\else\fi
+
+\bibitem{MSDN}
+\selectlanguageifdefined{english}
+\BibTitle{Создание приложения Windows Forms с помощью .NET Framework (C++)
+  [{Э}лектронный ресурс]}. "---
+\newblock
+  URL:~\url{http://msdn.microsoft.com/ru-ru/library/vstudio/ms235634(v=vs.100).aspx}
+  (Дата обращения 13.07.2017). Загл. с экр. Яз. рус.
+
+\end{thebibliography}

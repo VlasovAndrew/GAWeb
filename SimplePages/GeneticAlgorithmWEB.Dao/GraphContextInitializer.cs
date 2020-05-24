@@ -130,7 +130,7 @@ namespace GeneticAlgorithmWEB.Dao
             {
                 string fullPath = Path.Combine(workPath, folder, description.FileName);
                 string[] lines = File.ReadAllLines(fullPath);
-                Graph graph = GraphParser.ParseSimpleTxtFormat(lines);
+                Graph graph = GraphParser.ParseTxtFormat(lines);
                 context.Graphs.Add(graph);
                 graph.Name = description.GraphName;
                 graph.R = description.RealR;

@@ -7,7 +7,7 @@ namespace GeneticAlgorithmWEB.BLL
 {
     public static class GraphParser
     {
-        public static Graph ParseSimpleTxtFormat(string[] lines)
+        public static Graph ParseTxtFormat(string[] lines)
         {
             List<Edge> edges = new List<Edge>();
             foreach (var line in lines)
