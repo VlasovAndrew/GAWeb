@@ -9,6 +9,9 @@ namespace GeneticAlgorithmWEB.BLL
     {
         public static Graph ParseTxtFormat(string[] lines)
         {
+            if (lines.Length == 0) {
+                throw new FormatException("Файл с графом пустрой");
+            }
             List<Edge> edges = new List<Edge>();
             foreach (var line in lines)
             {

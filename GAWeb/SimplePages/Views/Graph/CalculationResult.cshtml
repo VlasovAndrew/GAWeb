@@ -1,0 +1,25 @@
+﻿@model GeneticAlgorithm.Entities.FindingVertexResponse
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Результаты вычислений";
+}
+
+<div class="row justify-content-center mt-2">
+    <div class="col-6">
+        <h4 class="text-center"> Результаты анализа </h4>
+        <div>
+            <span class="h5"> Время анализа: </span> <span> @Model.Time сек. </span>
+        </div>
+        <div>
+            <span class="h5"> Радиус графа: </span> <span> @Model.R </span>
+        </div>
+        <div>
+            <span class="h5"> Центральные вершины графа: </span>
+                @foreach (var v in Model.Center)
+                {
+                    <span> @v </span>
+                }
+        </div>
+        <div class="text-center"> *Алгортим не гарантирует точное решение. </div>
+    </div>
+</div>
