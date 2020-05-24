@@ -9,12 +9,38 @@
 \ifx\undefined\BibAnnote\def\BibAnnote#1{}\else\fi
 \ifx\undefined\BibSection\def\BibSection#1#2#3{}\else\fi
 
-\bibitem{MSDN}
+\bibitem{ADAM_FRIMAN}
+\selectlanguageifdefined{russian}
+\BibAuthor{Фримен,~A.} \BibTitle{ASP.NET MVC 5 Framework с примерами на C\# для
+  профессионалов}~/ A.~Фримен. "---
+\newblock Вильямс, 2015.
+
+\bibitem{MVC}
 \selectlanguageifdefined{english}
-\BibTitle{Создание приложения Windows Forms с помощью .NET Framework (C++)
+\BibTitle{Начало работы с ASP.NET MVC 5 [{Э}лектронный ресурс]}. "---
+\newblock
+  URL:~\url{https://docs.microsoft.com/ru-ru/aspnet/mvc/overview/getting-started/introduction/getting-started}
+  (Дата обращения 24.05.2020). Загл. с экр. Яз. рус.
+
+\bibitem{EF6}
+\selectlanguageifdefined{english}
+\BibTitle{Обзор Entity Framework 6 [{Э}лектронный ресурс]}. "---
+\newblock URL:~\url{https://docs.microsoft.com/ru-ru/ef/ef6/} (Дата обращения
+  24.05.2020). Загл. с экр. Яз. рус.
+
+\bibitem{VALIDATIONS}
+\selectlanguageifdefined{english}
+\BibTitle{System.ComponentModel.DataAnnotations Пространство имен
   [{Э}лектронный ресурс]}. "---
 \newblock
-  URL:~\url{http://msdn.microsoft.com/ru-ru/library/vstudio/ms235634(v=vs.100).aspx}
-  (Дата обращения 13.07.2017). Загл. с экр. Яз. рус.
+  URL:~\url{https://docs.microsoft.com/ru-ru/dotnet/api/system.componentmodel.dataannotations?view=netcore-3.1}
+  (Дата обращения 24.05.2020). Загл. с экр. Яз. рус.
+
+\bibitem{FORMS_AUTH}
+\selectlanguageifdefined{english}
+\BibTitle{Класс FormsAuthentication [{Э}лектронный ресурс]}. "---
+\newblock
+  URL:~\url{https://docs.microsoft.com/ru-ru/dotnet/api/system.web.security.formsauthentication?view=netframework-4.8}
+  (Дата обращения 24.05.2020). Загл. с экр. Яз. рус.
 
 \end{thebibliography}
