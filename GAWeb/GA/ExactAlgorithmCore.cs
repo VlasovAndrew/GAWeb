@@ -10,6 +10,7 @@ namespace GA
 {
     public class ExactAlgorithmCore
     {
+        // Реализация тривиального алгоритма.
         public int FindRadius(GraphContext graphContext) {
             int R = int.MaxValue;
             for (int v = 0; v < graphContext.N; v++) {

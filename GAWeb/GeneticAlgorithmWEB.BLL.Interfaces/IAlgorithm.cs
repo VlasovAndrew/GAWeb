@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace GeneticAlgorithmWEB.BLL.Interfaces
 {
+    // Интерфейс, описывающий методы для работы с 
+    // генетическим алгоритмом на уровне бизнес-логики.
     public interface IAlgorithm
     {
         FindingVertexResponse FindCentralVertex(Graph graph);
