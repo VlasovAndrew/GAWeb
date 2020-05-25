@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace GeneticAlgorithmWEB.DAL.Interfaces
 {
+    // Интерфейс, описывающий методы уровня доступа к графам.
     public interface IGraphDao
     {
         IEnumerable<GraphInfo> GetAllGraphInfo();

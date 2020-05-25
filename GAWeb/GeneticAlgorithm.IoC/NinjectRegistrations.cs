@@ -15,6 +15,7 @@ namespace GeneticAlgorithm.IoC
     {
         public override void Load()
         {
+            // Связывание интерфейсов с их реализвацией.
             Bind<IUserDao>().To<UserDao>();
             Bind<IGraphDao>().To<GraphDao>();
             Bind<IAlgorithm>().To<Algorithm>();

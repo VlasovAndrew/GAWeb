@@ -12,12 +12,14 @@ namespace GeneticAlgorithmWEB.Dao
 {
     class UserContextInitializer : CreateDatabaseIfNotExists<UserContext>
     {
+        // Инициализация базы данных одним пользователем.
         protected override void Seed(UserContext context)
         {
             CreateUserRequest userRequest = new CreateUserRequest() { 
                 Login = "admin",
                 Password = "admin"
             };
+            // Шифровка пароля пользователя
             Encryption encryption = new Encryption();
             User user = new User() { 
                 Login = userRequest.Login,

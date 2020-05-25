@@ -9,7 +9,7 @@ Reallocated glb_str_ptr (elt_size=4) to 10 items from 0.
 Reallocated global_strs (elt_size=1001) to 10 items from 0.
 Reallocated glb_str_end (elt_size=4) to 10 items from 0.
 Database file #1: thesis.bib
-I was expecting a `,' or a `}'---line 147 of file thesis.bib
+I was expecting a `,' or a `}'---line 228 of file thesis.bib
  :   
  :   YEAR =         {1987},
 (Error may have been on previous line)
@@ -20,10 +20,10 @@ Warning--empty year in VALIDATIONS
 Warning--empty year in FORMS_AUTH
 
 Here's how much of BibTeX's memory you used:
- Cites:                 5 out of 750
- Fields:              127 out of 5000
- Hash table:        18792 out of 19000
- Strings:             673 out of 19000
- Free string pool:   6416 out of 65000
+ Cites:                11 out of 750
+ Fields:              313 out of 5000
+ Hash table:        18785 out of 19000
+ Strings:             721 out of 19000
+ Free string pool:   7511 out of 65000
  Wizard functions:   2649 out of 3000
 (There was 1 error message)

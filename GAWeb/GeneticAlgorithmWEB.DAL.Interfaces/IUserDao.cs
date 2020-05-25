@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace GeneticAlgorithmWEB.DAL.Interfaces
 {
+    // Интерфейс, описывающий методы 
+    // уровня доступа к пользователям.
     public interface IUserDao
     {
         User GetById(int id);

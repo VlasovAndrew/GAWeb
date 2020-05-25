@@ -8,8 +8,12 @@ using System.Threading.Tasks;
 
 namespace GeneticAlgorithmWEB.Dao
 {
+    // Класс реализующий уровень доступа к данным.
+    // В классе определены основные методы для 
+    // получения пользователей из базы данных.
     public class UserDao : IUserDao
     {
+        // Сохраняет нового пользователя в базе данных.
         public User Add(User user)
         {
             using (UserContext context = new UserContext())
@@ -19,7 +23,7 @@ namespace GeneticAlgorithmWEB.Dao
                 return res;
             }
         }
-
+        // Получение пользователя по Id
         public User GetById(int id)
         {
             using (UserContext context = new UserContext())
@@ -27,7 +31,7 @@ namespace GeneticAlgorithmWEB.Dao
                 return context.Users.Where(u => u.Id == id).FirstOrDefault();
             }
         }
-
+        // Получение пользователя по логину
         public User GetByLogin(string name)
         {
             using (UserContext context = new UserContext())

@@ -9,6 +9,7 @@ namespace GeneticAlgorithmWEB.Dao
 {
     public class GraphContextInitializer : CreateDatabaseIfNotExists<GraphContext>
     {
+        // Класс для хранения информации о графе, прочитанной из файлов
         private class GraphDescription {
             public int RealR { get; set; }
             public string FileName { get; set; }
@@ -19,6 +20,7 @@ namespace GeneticAlgorithmWEB.Dao
 
         public GraphContextInitializer() {
             List<GraphDescription> descriptions = new List<GraphDescription>();
+            // Информация о графах хранящихся в файлах
             #region BA_GRAPHS
             
             descriptions.Add(new GraphDescription()
@@ -121,7 +123,8 @@ namespace GeneticAlgorithmWEB.Dao
             #endregion
             _graphDescriptions = descriptions.ToArray();
         }
-
+        // Метод, производящий начальную загрузку базы данных, за счет 
+        // ранее считанных данных о графах
         protected override void Seed(GraphContext context)
         {
             string workPath = HostingEnvironment.MapPath("~");

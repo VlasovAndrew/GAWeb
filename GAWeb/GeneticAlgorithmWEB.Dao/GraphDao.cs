@@ -9,8 +9,12 @@ using System.Threading.Tasks;
 
 namespace GeneticAlgorithmWEB.Dao
 {
+    // Класс реализующий уровень доступа к данным.
+    // В классе определены основные методы для 
+    // получения графов из базы данных.
     public class GraphDao : IGraphDao
     {
+        // Сохраняет новый граф в базе данных.
         public Graph Add(Graph graph)
         {
             using (GraphContext context = new GraphContext())
@@ -21,6 +25,7 @@ namespace GeneticAlgorithmWEB.Dao
             }
         }
 
+        // Получение описательной информации обо всех графах в базе данных.
         public IEnumerable<GraphInfo> GetAllGraphInfo()
         {
             List<GraphInfo> res = new List<GraphInfo>();
@@ -40,10 +45,14 @@ namespace GeneticAlgorithmWEB.Dao
             }
         }
 
+        // Получение графа по Id.
+        // Выбрасывает исключение, 
+        // если граф с переданным Id не удалось найти в БД.
         public Graph GetById(int id)
         {
             using (GraphContext context = new GraphContext())
             {
+                // Поиск графа при помощи LINQ запроса к контексту с графами.
                 Graph res = context.Graphs
                     .Where(g => g.Id == id)
                     .Include(g => g.Edges)
