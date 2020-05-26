@@ -1,14 +1,4 @@
-п»їusing GeneticAlgorithm.Entities;
-using GeneticAlgorithm.Entities.Requests;
-using GeneticAlgorithmWEB.BLL;
-using GeneticAlgorithmWEB.BLL.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Web;
-using System.Web.Mvc;
-
-namespace SimplePages.Controllers
+п»їnamespace SimplePages.Controllers
 {
     public class GraphController : Controller
     {
@@ -20,19 +10,19 @@ namespace SimplePages.Controllers
             _graphBL = graphBL;
         }
 
-        // РњРµС‚РѕРґ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ СЃС‚СЂР°РЅРёС†С‹ РїРѕРёСЃРєР° РІРµСЂС€РёРЅС‹.
+        // Метод для получения страницы поиска вершины.
         [HttpGet]
         public ActionResult Index()
         {
             return View("FindCenter");
         }
-        // РњРµС‚РѕРґ РґР»СЏ РЅР°С…РѕР¶РґРµРЅРёСЏ С†РµРЅС‚СЂР°Р»СЊРЅС‹С… РІРµСЂС€РёРЅ РІ РіСЂР°С„Рµ.
+        // Метод для нахождения центральных вершин в графе.
         [HttpPost]
         public ActionResult FindCentralVertex(HttpPostedFileBase upload)
         {
             if (upload == null) 
             {
-                return View("~/Views/Shared/Error.cshtml", model: "Р¤Р°Р№Р» РЅРµ Р±С‹Р» РІС‹Р±СЂР°РЅ");
+                return View("~/Views/Shared/Error.cshtml", model: "Файл не был выбран");
             }
             try
             {
@@ -45,24 +35,24 @@ namespace SimplePages.Controllers
                 return View("~/Views/Shared/Error.cshtml", model: e.Message);
             }
         }
-        // РњРµС‚РѕРґ РґР»СЏ РІРѕР·РІСЂР°С‰РµРЅРёСЏ СЃС‚СЂР°РЅРёС†С‹ СЃ РґРѕР±Р°РІР»РµРЅРёРµРј РіСЂР°С„Р°.
+        // Метод для возвращения страницы с добавлением графа.
         [HttpGet]
         [Authorize]
         public ActionResult Add() {
             return View("Add");
         }
-        // РњРµС‚РѕРґ РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ РіСЂР°С„Р°.
+        // Метод для добавления графа.
         [HttpPost]
         [Authorize]
         public ActionResult Add(AddGraphRequest request) {
             if (request.Upload == null) {
-                return View("~/Views/Shared/Error.cshtml", model: "Р’С‹Р±РµСЂРёС‚Рµ С„Р°Р№Р» СЃ РіСЂР°С„РѕРј");
+                return View("~/Views/Shared/Error.cshtml", model: "Выберите файл с графом");
             }
             try
             {
                 Graph graph = ReadGraph(request.Upload);
                 if (request.Name == null) {
-                    graph.Name = "Р“СЂР°С„ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ";
+                    graph.Name = "Граф пользователя";
                 }
                 else {
                     graph.Name = request.Name;
@@ -74,7 +64,7 @@ namespace SimplePages.Controllers
                 return View("~/Views/Shared/Error.cshtml", model: e.Message);
             }
         }
-        // Р§С‚РµРЅРёРµ С„Р°Р№Р»Р° РёР· РїРѕС‚РѕРєР° РґР°РЅРЅС‹С….
+        // Чтение файла из потока данных.
         private string[] ReadFile(Stream stream)
         {
             StreamReader reader = new StreamReader(stream);
@@ -86,7 +76,7 @@ namespace SimplePages.Controllers
             }
             return lines.ToArray();
         }
-        // Р§С‚РµРЅРёРµ РіСЂР°С„Р° РёР· СЃС‚СЂРѕРє С„Р°Р№Р»Р°.
+        // Чтение графа из строк файла.
         private Graph ReadGraph(HttpPostedFileBase upload) 
         {
             string[] fileLines = ReadFile(upload.InputStream);

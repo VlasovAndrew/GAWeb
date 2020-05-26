@@ -1,19 +1,14 @@
-п»їusing GeneticAlgorithm.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace GeneticAlgorithmWEB.BLL
+п»їnamespace GeneticAlgorithmWEB.BLL
 {
     public static class GraphParser
     {
-        // Р§С‚РµРЅРёРµ РіСЂР°С„Р° РёР· С‚РµРєСЃС‚РѕРІРѕРіРѕ С„РѕСЂРјР°С‚Р° С„Р°Р№Р»Р°.
-        // РџСЂРѕРІРµСЂСЏРµС‚ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРµ С‚РµРєСЃС‚РѕРІРѕРіРѕ С„Р°Р№Р»Р° 
-        // РЅР° СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРµ РІРµСЂРЅРѕРјСѓ С„РѕСЂРјР°С‚Сѓ.
+        // Чтение графа из текстового формата файла.
+        // Проверяет соответствие текстового файла 
+        // на соответствие верному формату.
         public static Graph ParseTxtFormat(string[] lines)
         {
             if (lines.Length == 0) {
-                throw new FormatException("Р¤Р°Р№Р» СЃ РіСЂР°С„РѕРј РїСѓСЃС‚СЂРѕР№");
+                throw new FormatException("Файл с графом пустрой");
             }
             List<Edge> edges = new List<Edge>();
             foreach (var line in lines)
@@ -21,7 +16,7 @@ namespace GeneticAlgorithmWEB.BLL
                 int[] vertices = line.Split().Select(v => int.Parse(v)).ToArray();
                 if (vertices.Length != 2)
                 {
-                    throw new FormatException("Р РµР±СЂР° РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ Р·Р°РїРёСЃР°РЅС‹ РєР°Рє РїР°СЂР° РІРµСЂС€РёРЅ");
+                    throw new FormatException("Ребра должны быть записаны как пара вершин");
                 }
                 Edge edge = new Edge()
                 {
@@ -30,7 +25,7 @@ namespace GeneticAlgorithmWEB.BLL
                 };
                 if (edge.V1 < 0 || edge.V2 < 0)
                 {
-                    throw new FormatException("РРЅРґРµРєСЃ РІРµСЂС€РёРЅ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Рј");
+                    throw new FormatException("Индекс вершин должен быть положительным");
                 }
                 edges.Add(edge);
             }
@@ -42,7 +37,7 @@ namespace GeneticAlgorithmWEB.BLL
                 Edges = edges,
             };
         }
-        // РџСЂРѕРІРµСЂРєР° С„Р°РєС‚Р°, С‡С‚Рѕ РЅСѓРјРµСЂР°С†РёСЏ РІРµСЂС€РёРЅ РЅР°С‡РёРЅР°РµС‚СЃСЏ СЃ 0 Рё РёРґРµС‚ РїРѕ РїРѕСЂСЏРґРєСѓ.
+        // Проверка факта, что нумерация вершин начинается с 0 и идет по порядку.
         private static int CountVerteces(List<Edge> edges)
         {
             HashSet<int> uniqueLabel = new HashSet<int>();
@@ -53,11 +48,11 @@ namespace GeneticAlgorithmWEB.BLL
             }
             int minValue = uniqueLabel.Min();
             if (minValue != 0) {
-                throw new FormatException("РРЅРґРµРєСЃР°С†РёСЏ РІРµСЂС€РёРЅ РґРѕР»Р¶РЅР° РЅР°С‡РёРЅР°С‚СЊСЃСЏ СЃ РЅСѓР»СЏ");
+                throw new FormatException("Индексация вершин должна начинаться с нуля");
             }
             int n = uniqueLabel.Max() + 1;
             if (n != uniqueLabel.Count) {
-                throw new FormatException("РРЅРґРµРєСЃР°С†РёСЏ РІРµСЂС€РёРЅ РґРѕР»Р¶РЅР° РёРґС‚Рё РїРѕ РїРѕСЂСЏРґРєСѓ");
+                throw new FormatException("Индексация вершин должна идти по порядку");
             }
             return n;
         }

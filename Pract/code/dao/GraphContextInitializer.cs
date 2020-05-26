@@ -1,11 +1,4 @@
-﻿using GeneticAlgorithm.Entities;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.IO;
-using System.Web.Hosting;
-using GeneticAlgorithmWEB.BLL;
-
-namespace GeneticAlgorithmWEB.Dao
+﻿namespace GeneticAlgorithmWEB.Dao
 {
     public class GraphContextInitializer : CreateDatabaseIfNotExists<GraphContext>
     {

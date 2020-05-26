@@ -22,7 +22,7 @@ namespace SimplePages
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            // Р РµРіРёСЃС‚СЂР°С†РёСЏ РєР»Р°СЃСЃР° РґР»СЏ РІРЅРµРґСЂРµРЅРёСЏ Р·Р°РІРёСЃРёРјРѕСЃС‚РµР№
+            // Регистрация класса для внедрения зависимостей
             NinjectModule registrations = new NinjectRegistrations();
             var kernel = new StandardKernel(registrations);
             DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));

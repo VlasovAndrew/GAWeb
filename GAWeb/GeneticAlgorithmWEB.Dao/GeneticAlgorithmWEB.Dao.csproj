@@ -77,9 +77,9 @@
       <Project>{26E46FFA-C4AD-43F2-9B3B-A06CACE36D2F}</Project>
       <Name>GeneticAlgorithmWEB.DAL.Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GeneticAlgorithmWEB.Encryption\GeneticAlgorithmWEB.Encryption.csproj">
-      <Project>{4DD820A1-085F-4288-82D4-FFF729967742}</Project>
-      <Name>GeneticAlgorithmWEB.Encryption</Name>
+    <ProjectReference Include="..\GeneticAlgorithmWEB.Encrypt\GeneticAlgorithmWEB.Encrypt.csproj">
+      <Project>{4BC49A11-114E-498D-AFE9-A1C735F26B10}</Project>
+      <Name>GeneticAlgorithmWEB.Encrypt</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

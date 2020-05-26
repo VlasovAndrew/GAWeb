@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GeneticAlgorithmWEB.BLL
+namespace GeneticAlgorithmWEB.Encrypt
 {
     // Класс отвечающий за хеширование паролей и их проверку.
     public class Encryption

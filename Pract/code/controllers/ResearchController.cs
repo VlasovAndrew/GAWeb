@@ -1,11 +1,4 @@
-п»їusing GeneticAlgorithm.Entities;
-using GeneticAlgorithm.Entities.Requests;
-using GeneticAlgorithm.Entities.Response;
-using GeneticAlgorithmWEB.BLL.Interfaces;
-using System.Collections.Generic;
-using System.Web.Mvc;
-
-namespace SimplePages.Controllers
+п»їnamespace SimplePages.Controllers
 {
     public class ResearchController : Controller
     {
@@ -17,14 +10,14 @@ namespace SimplePages.Controllers
             _graphBL = graphBL;
             _algorithmWork = algorithmWork;
         }
-        // РњРµС‚РѕРґ РїРѕР»СѓС‡РµРЅРёСЏ СЃС‚СЂР°РЅРёС†С‹ РґР»СЏ РІС‹Р±РѕСЂР° РїР°СЂР°РјРµС‚СЂРѕРІ РґР»СЏ Р·Р°РїСѓСЃРєР° РіРµРЅРµС‚РёС‡РµСЃРєРѕРіРѕ Р°Р»РіРѕСЂРёС‚РјР°.
+        // Метод получения страницы для выбора параметров для запуска генетического алгоритма.
         [HttpGet]
         public ActionResult Index()
         {
             IEnumerable<GraphInfo> graphs = _graphBL.GetAllGraphInfo();
             return View("ResearchParametrs", model: graphs);
         }
-        // РњРµС‚РѕРґ Р·Р°РїСѓСЃРєР° Р°Р»РіРѕСЂРёС‚РјР° СЃ РІС‹Р±СЂР°РЅРЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё.
+        // Метод запуска алгоритма с выбранными параметрами.
         [HttpPost]
         public ActionResult ResearchAlgorithm(ResearchRequest request) {
             ResearchAlgorithmResponse response = _algorithmWork.ResearchAlgorithm(request);

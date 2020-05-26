@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("GeneticAlgorithm")]
+[assembly: AssemblyTitle("GeneticAlgorithmWEB.Encrypt")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("GeneticAlgorithm")]
+[assembly: AssemblyProduct("GeneticAlgorithmWEB.Encrypt")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("e470fd78-5242-410d-af2f-dbf6a6e0970c")]
+[assembly: Guid("4bc49a11-114e-498d-afe9-a1c735f26b10")]
 
 // Version information for an assembly consists of the following four values:
 //

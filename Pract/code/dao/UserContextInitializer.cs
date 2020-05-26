@@ -1,14 +1,4 @@
-﻿using GeneticAlgorithm.Entities.Requests;
-using GeneticAlgorithm.Entities.Users;
-using GeneticAlgorithmWEB.BLL;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GeneticAlgorithmWEB.Dao
+﻿namespace GeneticAlgorithmWEB.Dao
 {
     class UserContextInitializer : CreateDatabaseIfNotExists<UserContext>
     {

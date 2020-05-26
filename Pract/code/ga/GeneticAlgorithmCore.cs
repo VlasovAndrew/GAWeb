@@ -1,31 +1,23 @@
-п»їusing GeneticAlgorithm;
-using GeneticAlgorithm.Entities;
-using RandomModule;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-
-namespace GA
+п»їnamespace GA
 {
-    // РћСЃРЅРѕРІРЅРѕР№ РєР»Р°СЃСЃ СЃ СЂРµР°Р»РёР·Р°С†РёРµР№ РіРµРЅРµС‚РёС‡РµСЃРєРѕРіРѕ Р°Р»РіРѕСЂРёС‚РјР°.
+    // Основной класс с реализацией генетического алгоритма.
     public class GeneticAlgorithmCore
     {
-        // РЎСЃС‹Р»РєР° РЅР° РѕР±СЉРµРєС‚ СЃ РіСЂР°С„РѕРј.
+        // Ссылка на объект с графом.
         private Graph _graph;
-        // Р Р°Р·РјРµСЂ РїРѕРїСѓР»СЏС†РёРё.
+        // Размер популяции.
         private int _populationSize;
-        // РџР°СЂР°РјРµС‚СЂС‹ РґР»СЏ РІРµСЂРѕСЏС‚РЅРѕСЃС‚Рё СЃРєСЂРµС‰РёРІР°РЅРёСЏ Рё РјСѓС‚Р°С†РёРё.
+        // Параметры для вероятности скрещивания и мутации.
         private double _pc, _pm;
-        // Р§РёСЃР»Рѕ РёС‚РµСЂР°С†РёР№ РіРµРЅРµС‚РёС‡РµСЃРєРѕРіРѕ Р°Р»РіРѕСЂРёС‚РјР°.
+        // Число итераций генетического алгоритма.
         private int _step;
         
         private Stopwatch _watch;
 
         private List<int> _population;
-        // РћР±РµСЂС‚РєР° РЅР°Рґ РіСЂР°С„РѕРј РІ РІРёРґРµ РєРѕРЅС‚РµРєС‚СЃР°.
+        // Обертка над графом в виде контектса.
         private GraphContext _graphContext;
-        // РћР±СЉРµРєС‚-РґРµРєРѕСЂР°С‚РѕСЂ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РіРµРЅРёСЂР°С†РёРµР№ СЃР»СѓС‡Р°Р№РЅС‹С… Р·РЅР°С‡РµРЅРёР№.
+        // Объект-декоратор для работы с генирацией случайных значений.
         private RandomWorker _rndWorker;
 
         public GeneticAlgorithmCore(Graph graph, int populationSize, double pm, double pc)
@@ -39,17 +31,17 @@ namespace GA
             _watch = new Stopwatch();
             _rndWorker = new RandomWorker();
         }
-        // РњРµС‚РѕРґ РґР»СЏ СЃС‚Р°СЂС‚Р° Р°Р»РіРѕСЂРёС‚РјР°.
+        // Метод для старта алгоритма.
         public FindingVertexResponse StartAlgorithm() {
-            // РќР°С‡Р°Р»СЊРЅР°СЏ РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ
+            // Начальная инициализация
             Init();
-            // Р—Р°РїСѓСЃРє РёР·РјРµСЂРµРЅРёСЏ РІСЂРµРјРµРЅРё СЂР°Р±РѕС‚С‹.
+            // Запуск измерения времени работы.
             _watch.Start();
             for (int i = 0; i < _step; i++)
             {
                 EvolutionStep();
             }
-            // РћРєРѕРЅС‡Р°РЅРёРµ РёР·РјРµСЂРµРЅРёР№.
+            // Окончание измерений.
             _watch.Stop();
 
             FindingVertexResponse res = new FindingVertexResponse() {
@@ -58,7 +50,7 @@ namespace GA
             GetBestResult(res);
             return res;
         }
-        // РќР°С‡Р°Р»СЊРЅР°СЏ РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РїР°СЂР°РјРµС‚СЂРѕРІ РїРµСЂРµРґ СЃС‚Р°СЂС‚РѕРј Р°Р»РіРѕСЂРёС‚РјР°.
+        // Начальная инициализация параметров перед стартом алгоритма.
         private void Init() {
             _graphContext = new GraphContext(_graph);
             _population = new List<int>();
@@ -72,7 +64,7 @@ namespace GA
             Mutation();
             Selection();
         }
-        // Р­С‚Р°Рї РјСѓС‚Р°С†РёРё.
+        // Этап мутации.
         private void Mutation() {
             for (int i = 0; i < _population.Count; i++)
             {
@@ -85,7 +77,7 @@ namespace GA
                 }
             }
         }
-        // Р­С‚Р°Рї СЃРєСЂРµС‰РёРІР°РЅРёСЏ.
+        // Этап скрещивания.
         private void Crossing() {
             List<int> crossed = new List<int>();
             for (int i = 0; i < _population.Count; i++) {
@@ -99,7 +91,7 @@ namespace GA
             }
             _population.AddRange(crossed);
         }
-        // Р­С‚Р°Рї РµСЃС‚РµСЃС‚РІРµРЅРЅРѕРіРѕ РѕС‚Р±РѕСЂР°.
+        // Этап естественного отбора.
         private void Selection()
         {
             List<int> e = new List<int>();
@@ -114,8 +106,8 @@ namespace GA
             }
             _population = selectedPopulation;   
         }
-        // РџРѕРёСЃРє РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ СЌРєСЃС†РµРЅС‚СЂРёСЃРёС‚РµС‚Р° - С†РµРЅС‚СЂР°Р»СЊРЅС‹С… РІРµСЂС€РёРЅ, 
-        // Рё СЂР°РґРёСѓСЃР° РіСЂР°С„Р°.
+        // Поиск минимального эксцентриситета - центральных вершин, 
+        // и радиуса графа.
         private void GetBestResult(FindingVertexResponse res) {
             List<int> e = new List<int>();
             foreach (var v in _population)

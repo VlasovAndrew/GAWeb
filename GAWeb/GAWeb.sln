@@ -35,7 +35,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneticAlgorithmWEB.Dao", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneticAlgorithmWEB.DAL.Interfaces", "GeneticAlgorithmWEB.DAL.Interfaces\GeneticAlgorithmWEB.DAL.Interfaces.csproj", "{26E46FFA-C4AD-43F2-9B3B-A06CACE36D2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneticAlgorithmWEB.Encryption", "GeneticAlgorithmWEB.Encryption\GeneticAlgorithmWEB.Encryption.csproj", "{4DD820A1-085F-4288-82D4-FFF729967742}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneticAlgorithmWEB.Encrypt", "GeneticAlgorithmWEB.Encrypt\GeneticAlgorithmWEB.Encrypt.csproj", "{4BC49A11-114E-498D-AFE9-A1C735F26B10}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,10 +83,10 @@ Global
 		{26E46FFA-C4AD-43F2-9B3B-A06CACE36D2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26E46FFA-C4AD-43F2-9B3B-A06CACE36D2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26E46FFA-C4AD-43F2-9B3B-A06CACE36D2F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4DD820A1-085F-4288-82D4-FFF729967742}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4DD820A1-085F-4288-82D4-FFF729967742}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4DD820A1-085F-4288-82D4-FFF729967742}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4DD820A1-085F-4288-82D4-FFF729967742}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BC49A11-114E-498D-AFE9-A1C735F26B10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BC49A11-114E-498D-AFE9-A1C735F26B10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BC49A11-114E-498D-AFE9-A1C735F26B10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BC49A11-114E-498D-AFE9-A1C735F26B10}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -102,7 +102,7 @@ Global
 		{A3A08FFF-92E8-4AB7-B926-BF02F11B28AC} = {3A64C8ED-76A2-4A60-94A9-6110775BF34F}
 		{AC7CD91C-1C44-4216-A7C8-F70ABBEF0DA7} = {E632C32B-DBD6-472D-B478-C8308FA744F9}
 		{26E46FFA-C4AD-43F2-9B3B-A06CACE36D2F} = {E632C32B-DBD6-472D-B478-C8308FA744F9}
-		{4DD820A1-085F-4288-82D4-FFF729967742} = {3A64C8ED-76A2-4A60-94A9-6110775BF34F}
+		{4BC49A11-114E-498D-AFE9-A1C735F26B10} = {3A64C8ED-76A2-4A60-94A9-6110775BF34F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C2F44754-3AD0-4276-903D-F309159FBD77}

@@ -20,13 +20,14 @@
 
 \lstset{
 	breaklines=true, 
-	language=csh, 
+	language=C, 
 	numberstyle=\tiny, 
 	numbers=left, 
 	columns=flexible,
 	keepspaces=false, 
 	basicstyle=\small,
 }
+
 
 \begin{document}
 
@@ -332,8 +333,7 @@ public interface IUserDao
 существует, за счет кода, который описан в переопределенном методе \verb|Seed|. 
 Внутри этого метода происходит чтение нескольких созданных графов из текстовых файлов, 
 все это происходит внутри метода, описанного в классе \verb|GraphContextInitializer|, в этом же методе в классе 
-\verb|UserContextInitializer| добавляется пользователь с логином \verb|admin| и паролем \verb|admin|. Полный код представлен в 
-приложении \ref{app:dal}.
+\verb|UserContextInitializer| добавляется пользователь с логином \verb|admin| и паролем \verb|admin|. Полный код представлен в приложении \ref{app:dal}.
  
 \subsection{Уровень бизнес-логики}
 Уровень бизнес-логики представляет собой похожую структуру, как и уровень доступа данных "--- так же 
@@ -341,7 +341,7 @@ public interface IUserDao
 При этом многие из этих интерфейсов похожи на те, которые описаны в уровне доступа к данным, однако 
 именно на этом уровне происходит запуск генетического алгоритма с различными параметрами и    
 анализ загруженных графов.
-С определением интерфейсов и классов реализующих бизнес-логику приложения можно ознакомиться в приложении [ссылка].
+С определением интерфейсов и классов реализующих бизнес-логику приложения можно ознакомиться в приложении \ref{app:bl}.
 Классы \verb|GraphBL| и \verb|UserBL|, реализуют интерфейсы \verb|IGraphBL| и \verb|IUserBL|. Они содержат ссылки на объекты, 
 реализующие интерфейсы \verb|IGraphDao| и \verb|IUserBL|, при 
 этом эти объекты передаются в качестве параметров в соответствующие конструкторы. 
@@ -381,6 +381,7 @@ public class ResearchAlgorithmResponse
     }
 \end{Verbatim}
 
+Полный код классов уровня бизнес"=логики можно увидеть в приложении \ref{app:bl}.
 
 \subsection{Уровень представления}
 Так как проект представляет собой веб"=приложение, то уровень, отвечающий за пользовательский интерфейс реализован при помощи 
@@ -418,8 +419,7 @@ public class ResearchAlgorithmResponse
 \begin{itemize}
 	\item \verb|/Research/Index| "--- обрабатывает GET"=запрос и возвращает форму с выбором параметров для генетического 
 	алгоритма, при этом в результат подгружаются описания графов, сохраненных в базе данных,
-	\item \verb|/Research/ResearchAlgorithm| "--- обрабатывает POST"=запрос в который передаются выбранные параметры алгоритма и 
-	выбранный граф.
+	\item \verb|/Research/ResearchAlgorithm| "--- обрабатывает POST"=запрос в который передаются выбранные параметры алгоритма и выбранный граф.
 \end{itemize}
 
 В классе \verb|LoginController| определены методы, за счет которых происходит регистрация и аутентификация пользователей.
@@ -437,6 +437,8 @@ public class ResearchAlgorithmResponse
 	\item \verb|/Login/SignUp| "--- обрабатывает POST"=запрос и добавляет нового пользователя при успешном прохождении валидации 
 	и отсутствии пользователя с таким же логином.
 \end{itemize}
+
+Полный код контроллеров можно увидеть в приложении \ref{app:controllers}.
 
 \subsubsection{Модели данных и валидация}
 Основными классами, с помощью объектов которых происходит передача данным в контроллеры, \verb|AddGraphRequest|, 
@@ -499,7 +501,7 @@ if (ModelState.IsValid) {
 доступ только пользователи, которые вошли в систему. В связи с этим в качестве технологии аутентификации в созданном приложении 
 используется аутентификация с помощью форм \cite{FORMS_AUTH}. 
 Для ее включения в файл \verb|Web.config| были добавлены следующие строки:
-\begin{Verbatim}
+\begin{Verbatim}[fontsize=\small, numbers=left]
 <authentication mode="Forms">
       <forms loginUrl="~/login" timeout="60" />
 </authentication>
@@ -508,7 +510,7 @@ if (ModelState.IsValid) {
 ресурсам и время действия cookie"-файлов.
 При успешном прохождении проверки на принадлежность пользователю введенного им пароля при помощи следующей строки кода 
 клиентская часть получает cookie"=файлы, которые затем будут присоединяться ко всем остальным запросам:
-\begin{Verbatim}
+\begin{Verbatim}[fontsize=\small, numbers=left]
 FormsAuthentication.SetAuthCookie(user.Login, true);
 \end{Verbatim}
 Для того, чтобы к определенным методам был доступ только аутентифицированным пользователям к каждому методу применяется атрибут 
@@ -520,10 +522,10 @@ FormsAuthentication.SetAuthCookie(user.Login, true);
 Очевидно, что хранение паролей пользователей в открытом виде 
 представляет собой подход нарушающий основы требования к безопасности приложения. 
 В связи с чем каждый пароль при регистрации пользователя хешируется и полученный хеш сохраняется в 
-базе данных. Хеширование паролей происходит в классе \verb|Encryption| (см. приложение [ссылка]), где определены публичные 
+базе данных. Хеширование паролей происходит в классе \verb|Encryption| (см. приложение \ref{app:bl}), где определены публичные 
 методы \verb|CreatePassword| и \verb|CheckPassword|. 
 Создание хеша пароля происходит при помощи объекта класса \verb|Rfc2898DeriveBytes| \cite{Rfc2898DeriveBytes}:
-\begin{Verbatim}
+\begin{Verbatim}[fontsize=\small, numbers=left]
 var pbkdf2 = new Rfc2898DeriveBytes(password, salt, iterations);
 byte[] hash = pbkdf2.GetBytes(hashSize);
 \end{Verbatim}
@@ -541,7 +543,7 @@ byte[] hash = pbkdf2.GetBytes(hashSize);
 используется IoC"=контейнер \verb|Ninject|, который связывает интерфейсы с объектами, которые их реализуют и предоставлять их 
 при необходимости.
 Связывание интерфейсов и реализации происходит в методе класса \verb|NinjectRegistrations|:
-\begin{Verbatim}
+\begin{Verbatim}[fontsize=\small, numbers=left]
 public class NinjectRegistrations : NinjectModule
     {
         public override void Load()
@@ -555,7 +557,7 @@ public class NinjectRegistrations : NinjectModule
     }
 \end{Verbatim}
 При этом в глобальном файле запуска приложения происходит регистрация этого класса в качестве основного способа разрешения 
-зависимостей (см. приложение [ссылка]).
+зависимостей (см. приложение \ref{app:di}).
 
 \section{Работа с генетическим алгоритмом}
 Для изолированного доступа к методам генетического алгоритма и для корректного измерения временных затрат, а так же для 
@@ -580,14 +582,14 @@ public class NinjectRegistrations : NinjectModule
 эксцентриситет вершин при помощи алгоритма поиска в ширину, а также позволяет проверять граф на связность с помощью этого же 
 алгоритма. Расстояния, найденные в ходе процесса определения эксцентриситета хранятся в матрице $N \times N$, а кроме этого
 для хранения кротчайших путей используется такая же матрица, где каждым элементом является список вершин в пути. 
-С полным кодом описанного класса можно ознакомиться в приложении [ссылка].
+С полным кодом описанного класса можно ознакомиться в приложении \ref{app:graph}.
 
 \subsubsection{Генетический алгоритм}
 Сам генетический алгоритм реализован в классе \verb|GeneticAlgorithmCore|.
 При создании объекта этого класса в конструктор передаются такие параметры, как объект типа \verb|Graph|, значение параметра 
 для уровня вероятности мутации, параметр для уровня вероятности скрещивания и размер  популяции. После того, как объект этого 
 класса создан у него можно вызвать метод \verb|StartAlgorithm|:
-\begin{Verbatim}
+\begin{Verbatim}[fontsize=\small, numbers=left]
 public FindingVertexResponse StartAlgorithm() {
 	Init();
 	_watch.Start();
@@ -611,6 +613,8 @@ public FindingVertexResponse StartAlgorithm() {
 \verb|ExactAlgorithmCore|, который запускает алгоритм обхода в ширину, из каждой вершины, что позволяет гарантированно найти 
 точный радиус графа.
 
+Полноценный код всего приложения представлен на CD"=диске \ref{app:CD}.
+
 \conclusion
 В рамках выполнения практики была достигнута поставленная цель "--- создано веб"=приложение,
 за счет которого существует возможность работать с генетическим алгоритмом поиска центральных вершин.
@@ -620,7 +624,7 @@ public FindingVertexResponse StartAlgorithm() {
 \bibliography{thesis}
 
 \appendix
-\section{Программный код классов уровня доступа к данным} \label{app:dal}
+\section{Уровень доступа данных} \label{app:dal}
 Далее приводится программный код основных файлов, описывающих уровень доступа к данным.
 \lstinputlisting{code/dao/GraphContext.cs}
 \lstinputlisting{code/dao/GraphDao.cs}
@@ -628,11 +632,37 @@ public FindingVertexResponse StartAlgorithm() {
 \lstinputlisting{code/dao/UserContextInitializer.cs}
 \lstinputlisting{code/dao/UserDao.cs}
 
-\section{Программный код классов уровня бизнес"=логики} \label{app:bl}
+\section{Уровень бизнес-логики} \label{app:bl}
+Далее приводится программный код, за счет которого происходит реализация уровня бизнес"=логики.
+\lstinputlisting{code/bl/Algorithm.cs}
+\lstinputlisting{code/bl/Encryption.cs}
+\lstinputlisting{code/bl/GraphBL.cs}
+\lstinputlisting{code/bl/UserBL.cs}
 
+\section{Уровень пользовательского интерфейса} \label{app:controllers}
+Далее приводится описание основных классов"=контроллеров.
+\lstinputlisting{code/controllers/GraphController.cs}
+\lstinputlisting{code/controllers/HomeController.cs}
+\lstinputlisting{code/controllers/LoginController.cs}
+\lstinputlisting{code/controllers/ResearchController.cs}
 
+\section{Внедрение зависимостей} \label{app:di}
+Далее приводится программный код, который отвечает за внедрение зависимостей в приложении:
+\lstinputlisting{code/di/NinjectRegistrations.cs}
+\lstinputlisting{code/di/Global.asax.cs}
 
-\section{Код}
+\section{Генетический алгоритм} \label{app:graph}
+Классы, отвечающие за работу генетического алгоритма и работу с графами.
+\lstinputlisting{code/ga/ExactAlgorithmCore.cs}
+\lstinputlisting{code/ga/GeneticAlgorithmCore.cs}
+\lstinputlisting{code/ga/GraphContext.cs}
+\lstinputlisting{code/ga/GraphParser.cs}
 
+\section{CD-диск с отчетом о выполненной работе}\label{app:CD}
+На приложенном диске можно ознакомиться со следующими файлами:
+\begin{description}
+	\item[Папка \texttt{Pract}] "---   \LaTeX- вариант отчета о практике;
+	\item[Папка \texttt{GAWeb}] "--- Visual"=Studio проект с полным кодом приложения;
+\end{description}
 
 \end{document}

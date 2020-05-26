@@ -1,13 +1,7 @@
-п»їusing GeneticAlgorithm.Entities.Users;
-using GeneticAlgorithmWEB.BLL.Interfaces;
-using GeneticAlgorithmWEB.DAL.Interfaces;
-using GeneticAlgorithm.Entities.Requests;
-using GeneticAlgorithmWEB.Encrypt;
-
-namespace GeneticAlgorithmWEB.BLL
+п»їnamespace GeneticAlgorithmWEB.BLL
 {
-    // РЈСЂРѕРІРµРЅСЊ Р±РёР·РЅРµСЃ-Р»РѕРіРёРєРё.
-    // Р РµР°Р»РёР·СѓС‚ СЂР°Р±РѕС‚Сѓ СЃ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРјРё.
+    // Уровень бизнес-логики.
+    // Реализут работу с пользователями.
     public class UserBL : IUserBL
     {
         private readonly IUserDao _userDao;
@@ -18,7 +12,7 @@ namespace GeneticAlgorithmWEB.BLL
             _userDao = userDao;
             _encryption = new Encryption();
         }
-        // Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃ С€РёС„СЂР°С†РёРµР№ РїР°СЂРѕР»СЏ
+        // Добавление нового пользователя с шифрацией пароля
         public void Add(CreateUserRequest user)
         {
             User createdUser = new User() { 
@@ -28,7 +22,7 @@ namespace GeneticAlgorithmWEB.BLL
             _userDao.Add(createdUser);
         }
 
-        // РџСЂРѕРІРµСЂРєР° РїР°СЂРѕР»СЏ РїРѕ Р»РѕРіРёРЅСѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+        // Проверка пароля по логину пользователя
         public bool CheckPassword(LoginUserRequest user)
         {
             User realUser = _userDao.GetByLogin(user.Login);
@@ -41,7 +35,7 @@ namespace GeneticAlgorithmWEB.BLL
                 return _encryption.CheckPassword(realUser.Password, user.Password);
             }
         }
-        // РџСЂРѕРІРµСЂРєР° СЃСѓС‰РµСЃС‚РІСѓРµС‚ Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃ РїРµСЂРµРґР°РЅРЅС‹Рј Р»РѕРіРёРЅРѕРј
+        // Проверка существует ли пользователь с переданным логином
         public bool UserExists(CreateUserRequest user) {
             return _userDao.GetByLogin(user.Login) != null;
         }

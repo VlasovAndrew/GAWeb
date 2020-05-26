@@ -88,7 +88,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Algorithm.cs" />
-    <Compile Include="Encryption.cs" />
     <Compile Include="GraphBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserBL.cs" />
@@ -113,6 +112,10 @@
     <ProjectReference Include="..\GeneticAlgorithmWEB.Dao\GeneticAlgorithmWEB.Dao.csproj">
       <Project>{AC7CD91C-1C44-4216-A7C8-F70ABBEF0DA7}</Project>
       <Name>GeneticAlgorithmWEB.Dao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GeneticAlgorithmWEB.Encrypt\GeneticAlgorithmWEB.Encrypt.csproj">
+      <Project>{4BC49A11-114E-498D-AFE9-A1C735F26B10}</Project>
+      <Name>GeneticAlgorithmWEB.Encrypt</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

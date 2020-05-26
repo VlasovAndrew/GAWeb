@@ -1,12 +1,4 @@
-п»їusing GeneticAlgorithm.Entities.Users;
-using GeneticAlgorithmWEB.DAL.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GeneticAlgorithmWEB.Dao
+п»їnamespace GeneticAlgorithmWEB.Dao
 {
     // Класс реализующий уровень доступа к данным.
     // В классе определены основные методы для 

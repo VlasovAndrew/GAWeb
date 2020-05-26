@@ -1,14 +1,4 @@
-п»їusing GeneticAlgorithm.Entities.Requests;
-using GeneticAlgorithmWEB.BLL.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Security;
-
-namespace SimplePages.Controllers
+п»їnamespace SimplePages.Controllers
 {
     public class LoginController : Controller
     {
@@ -21,13 +11,13 @@ namespace SimplePages.Controllers
         {
             _userBL = userBL;
         }
-        // РЎС‚СЂР°РЅРёС†Р° РґР»СЏ РІС…РѕРґР° РІ СЃРёСЃС‚РµРјСѓ.
+        // Страница для входа в систему.
         [HttpGet]
         public ActionResult Index()
         {
             return View(signInViewName, new LoginUserRequest());
         }
-        // РњРµС‚РѕРґ РґР»СЏ РІС…РѕРґР° РІ СЃРёСЃС‚РµРјСѓ.
+        // Метод для входа в систему.
         [HttpPost]
         public ActionResult SignIn(LoginUserRequest user) {
             if (!ModelState.IsValid) {
@@ -39,17 +29,17 @@ namespace SimplePages.Controllers
                 return Redirect("/");
             }
             else {
-                ModelState.AddModelError("LOGIN_PASSWORD", "РќРµРІРµСЂРЅС‹Р№ Р»РѕРіРёРЅ РёР»Рё РїР°СЂРѕР»СЊ");
+                ModelState.AddModelError("LOGIN_PASSWORD", "Неверный логин или пароль");
             }
             return View(signInViewName, user);
         }
-        // РЎС‚СЂР°РЅРёС†Р° РґР»СЏ СЂРµРіРёСЃС‚СЂР°С†РёРё РЅРѕРІРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
+        // Страница для регистрации нового пользователя.
         [HttpGet]
         [Authorize]
         public ActionResult SignUp() {
             return View(signUpViewName);
         }
-        // РњРµС‚РѕРґ РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ РЅРѕРІРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
+        // Метод для добавления нового пользователя.
         [HttpPost]
         [Authorize]
         public ActionResult SignUp(CreateUserRequest creatingUser) {
@@ -62,11 +52,11 @@ namespace SimplePages.Controllers
                 return View(successSignUpViewName, creatingUser);
             }
             else {
-                ModelState.AddModelError("LOGIN_PASSWORD", "РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃ С‚Р°РєРёРј Р»РѕРіРёРЅРѕРј СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚");
+                ModelState.AddModelError("LOGIN_PASSWORD", "Пользователь с таким логином уже существует");
             }
             return View(signUpViewName, creatingUser);
         }
-        // РњРµС‚РѕРґ РґР»СЏ РІС‹С…РѕРґР° РёР· СЃРёСЃС‚РµРјС‹.
+        // Метод для выхода из системы.
         [HttpGet]
         public ActionResult SignOut() {
             FormsAuthentication.SignOut();
