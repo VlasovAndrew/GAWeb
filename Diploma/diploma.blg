@@ -9,17 +9,16 @@ Reallocated glb_str_ptr (elt_size=4) to 10 items from 0.
 Reallocated global_strs (elt_size=1001) to 10 items from 0.
 Reallocated glb_str_end (elt_size=4) to 10 items from 0.
 Database file #1: thesis.bib
-I was expecting a `,' or a `}'---line 232 of file thesis.bib
- :   
- :   YEAR =         {1987},
-(Error may have been on previous line)
+Repeated entry---line 149 of file thesis.bib
+ : @book{Holland
+ :              ,
 I'm skipping whatever remains of this entry
 
 Here's how much of BibTeX's memory you used:
- Cites:                 1 out of 750
- Fields:                3 out of 5000
- Hash table:        18793 out of 19000
- Strings:             657 out of 19000
- Free string pool:   5591 out of 65000
+ Cites:                 8 out of 750
+ Fields:              220 out of 5000
+ Hash table:        18782 out of 19000
+ Strings:             711 out of 19000
+ Free string pool:   6473 out of 65000
  Wizard functions:   2649 out of 3000
 (There was 1 error message)

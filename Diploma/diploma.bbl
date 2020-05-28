@@ -15,4 +15,60 @@
   Adaption in Natural and Artificial Systems}~/ J.~Holland. "---
 \newblock University of Michigan Press, 1975.
 
+\bibitem{CORMEN}
+\selectlanguageifdefined{english}
+\BibAuthor{Кормен,~Т.} \BibTitle{Алгоритмы: построение и анализ}~/ Т.~Кормен,
+  .~Лейзерсон, Р.~Ривест, .~Штайн. "---
+\newblock Вильямс, 2019.
+
+\bibitem{Aingworth}
+\selectlanguageifdefined{english}
+\BibAuthor{Aingworth,~D.} \BibTitle{Fast estimation of diameter and shortest
+  paths (without matrix multiplication)}~/ D.~Aingworth, C.~Chekuri, P.~Indyk,
+  R.~Motwani~// \emph{SIAM J. Comput.} "---
+\newblock 1999. "---
+\newblock Vol.~28, no.~1. "---
+\newblock Pp.~1167--1181.
+
+\bibitem{Seidel}
+\selectlanguageifdefined{english}
+\BibAuthor{Seidel,~R.} \BibTitle{On the all-pairs-shortest-path problem in
+  unweighted undirected graphs}~/ R.~Seidel~// \emph{J. Comput. Syst. Sci.}
+  "---
+\newblock 1995. "---
+\newblock Vol.~51, no.~3. "---
+\newblock Pp.~400--403.
+
+\bibitem{Strassen1969}
+\selectlanguageifdefined{english}
+\BibAuthor{Strassen,~V.} \BibTitle{Gaussian elimination is not optimal}~/
+  V.~Strassen~// \emph{Numerische Mathematik}. "---
+\newblock Aug 1969. "---
+\newblock Vol.~13, no.~4. "---
+\newblock Pp.~354--356.
+
+\bibitem{ER}
+\selectlanguageifdefined{english}
+\BibAuthor{Erd\"{o}s,~P.} \BibTitle{On random graphs {I}}~/ P.~Erd\"{o}s,
+  A.~R\'{e}nyi~// \emph{Publicationes Mathematicae Debrecen}. "---
+\newblock 1959. "---
+\newblock Vol.~6. "---
+\newblock P.~290.
+
+\bibitem{BA}
+\selectlanguageifdefined{english}
+\BibAuthor{Albert,~R.} \BibTitle{Statistical mechanics of complex networks}~/
+  R.~Albert, A.-L. Barabasi~// \emph{Reviews of Modern Physics}. "---
+\newblock 2002. "---
+\newblock Vol.~74, no.~1. "---
+\newblock Pp.~47--97.
+
+\bibitem{GEOM}
+\selectlanguageifdefined{english}
+\BibAuthor{Gilbert,~E.} \BibTitle{Random plane networks}~/ E.~Gilbert~//
+  \emph{Journal of the Society for Industrial and Applied Mathematics}. "---
+\newblock 1961. "---
+\newblock Vol.~9, no.~4. "---
+\newblock Pp.~533--543.
+
 \end{thebibliography}
