@@ -9,7 +9,7 @@ Reallocated glb_str_ptr (elt_size=4) to 10 items from 0.
 Reallocated global_strs (elt_size=1001) to 10 items from 0.
 Reallocated glb_str_end (elt_size=4) to 10 items from 0.
 Database file #1: thesis.bib
-I was expecting a `,' or a `}'---line 232 of file thesis.bib
+I was expecting a `,' or a `}'---line 230 of file thesis.bib
  :   
  :   YEAR =         {1987},
 (Error may have been on previous line)
@@ -25,6 +25,6 @@ Here's how much of BibTeX's memory you used:
  Fields:              344 out of 5000
  Hash table:        18785 out of 19000
  Strings:             725 out of 19000
- Free string pool:   7762 out of 65000
+ Free string pool:   7763 out of 65000
  Wizard functions:   2649 out of 3000
 (There was 1 error message)

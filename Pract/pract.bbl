@@ -51,8 +51,7 @@
 
 \bibitem{PANCHENCO}
 \selectlanguageifdefined{english}
-\BibAuthor{Т.В. Панченко,}. \BibTitle{Генетические алгоритмы}~/ Т.В. Панченко.
-  "---
+\BibAuthor{Панченко,~Т.} \BibTitle{Генетические алгоритмы}~/ Т.~Панченко. "---
 \newblock Астрахань: Издательский дом <<Астраханский университет>>, 2007.
 
 \bibitem{ADAM_FRIMAN}

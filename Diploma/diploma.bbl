@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 \def\selectlanguageifdefined#1{
 \expandafter\ifx\csname date#1\endcsname\relax
 \else\language\csname l@#1\endcsname\fi}
@@ -20,6 +20,31 @@
 \BibAuthor{Кормен,~Т.} \BibTitle{Алгоритмы: построение и анализ}~/ Т.~Кормен,
   .~Лейзерсон, Р.~Ривест, .~Штайн. "---
 \newblock Вильямс, 2019.
+
+\bibitem{APSP}
+\selectlanguageifdefined{english}
+\BibAuthor{Chan,~T.~M.} \BibTitle{All-pairs shortest paths for unweighted
+  undirected graphs in $o(mn)$ time}~/ T.~M. Chan~// \emph{ACM Trans.
+  Algorithms}. "---
+\newblock oct 2012. "---
+\newblock Vol.~8, no.~4. "---
+\newblock Pp.~34:1--34:17.
+
+\bibitem{Fast_Approximation}
+\selectlanguageifdefined{english}
+\BibAuthor{Berman,~P.} \BibTitle{Faster approximation of distances in
+  graphs}~// Algorithms and Data Structures~/ Ed. by F.~Dehne, J.-R. Sack,
+  N.~Zeh. "---
+\newblock Berlin, Heidelberg: Springer Berlin Heidelberg, 2007.
+
+\bibitem{Fast_Radius}
+\selectlanguageifdefined{english}
+\BibAuthor{Roditty,~L.} \BibTitle{Fast approximation algorithms for the
+  diameter and radius of sparse graphs}~// Proceedings of the Forty-fifth
+  Annual ACM Symposium on Theory of Computing. "---
+\newblock STOC '13. "---
+\newblock New York, NY, USA: ACM, 2013. "---
+\newblock Pp.~515--524.
 
 \bibitem{Aingworth}
 \selectlanguageifdefined{english}
@@ -46,6 +71,15 @@
 \newblock Aug 1969. "---
 \newblock Vol.~13, no.~4. "---
 \newblock Pp.~354--356.
+
+\bibitem{GA_N4N}
+\selectlanguageifdefined{english}
+\BibAuthor{{Alkhalifah},~Y.} \BibTitle{A genetic algorithm applied to graph
+  problems involving subsets of vertices}~// Proceedings of the 2004 Congress
+  on Evolutionary Computation (IEEE Cat. No.04TH8753). "---
+\newblock Vol.~1. "---
+\newblock June 2004. "---
+\newblock Pp.~303--308.
 
 \bibitem{ER}
 \selectlanguageifdefined{english}
