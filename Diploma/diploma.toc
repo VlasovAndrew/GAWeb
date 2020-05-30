@@ -29,4 +29,5 @@
 \ttl@change@i {\@ne }{section}{3ex}{\hspace {-3ex}}{\appendixname ~\thecontentslabel \hspace {2ex}}{\hspace {2.3em}}{\titlerule *[0.98ex]{.}\contentspage }\relax 
 \ttl@change@v {section}{}{}{}\relax 
 \contentsline {section}{\numberline {\CYRA }\IeC {\CYRK }\IeC {\cyro }\IeC {\cyrd } \IeC {\cyrg }\IeC {\cyre }\IeC {\cyrn }\IeC {\cyre }\IeC {\cyrt }\IeC {\cyri }\IeC {\cyrch }\IeC {\cyre }\IeC {\cyrs }\IeC {\cyrk }\IeC {\cyro }\IeC {\cyrg }\IeC {\cyro } \IeC {\cyra }\IeC {\cyrl }\IeC {\cyrg }\IeC {\cyro }\IeC {\cyrr }\IeC {\cyri }\IeC {\cyrt }\IeC {\cyrm }\IeC {\cyra }}{34}{appendix.A}
+\contentsline {section}{\numberline {\CYRB }\IeC {\CYRK }\IeC {\cyro }\IeC {\cyrd } \IeC {\cyro }\IeC {\cyrs }\IeC {\cyrn }\IeC {\cyro }}{38}{appendix.B}
 \contentsfinish 
