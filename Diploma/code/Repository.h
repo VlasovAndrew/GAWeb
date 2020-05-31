@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 
 #include <fstream>
 #include <map>
@@ -30,12 +30,13 @@ private:
 			this->realR = r;
 		}
 	};
-
+	// реальные предподсчитанные радиусы графов
 	vector<int> RADIUS_BA = { 4, 4, 5, 4, 5, 5, 5 };
 	vector<int> RADIUS_GEOM = { 9, 9, 8, 8, 8, 8, 8 };
 	vector<int> RADIUS_ER = { 5, 4, 4, 4, 3, 3, 3 };
 	int TEST = 4;
 
+	// Названия файлов с графами
 	vector<string> BA_FILE = {
 		"BA_Graph\\BarabasiAlbertGraph1_M2.txt",
 		"BA_Graph\\BarabasiAlbertGraph2_M2.txt",
@@ -62,7 +63,8 @@ private:
 		"ERDOSRENYI_Graph\\ErdosRenyi5_P001.txt",
 		"ERDOSRENYI_Graph\\ErdosRenyi6_P001.txt",
 		"ERDOSRENYI_Graph\\ErdosRenyi7_P001.txt" };
-
+	// чтение графа в зависимости от переданного параметра,
+	// отвечающего за тип этого графа
 	GraphParams getGraphData(string graphType) {
 		string fileName;
 		int real_r = 0;
@@ -86,11 +88,13 @@ private:
 
 
 public:
+	// метод для получения графа из файла
 	GraphDescription getGraph(string graphType) {
+		// получение параметров графа
 		GraphParams params = this->getGraphData(graphType);
 		int n, m;
+		// чтение графа из файла
 		edges e = readFromFileNM(params.fileName, n, m);
-
 		cout << "N = " << n << " M = " << m << endl;
 		return GraphDescription(n, m, e, params.realR);
 	}

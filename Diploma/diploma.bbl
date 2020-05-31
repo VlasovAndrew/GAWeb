@@ -17,8 +17,8 @@
 
 \bibitem{CORMEN}
 \selectlanguageifdefined{english}
-\BibAuthor{Кормен,~Т.} \BibTitle{Алгоритмы: построение и анализ}~/ Т.~Кормен,
-  .~Лейзерсон, Р.~Ривест, .~Штайн. "---
+\BibAuthor{Кормен,~Т.} \BibTitle{Алгоритмы: построение и анализ}~/ Т.~Кормен.
+  "---
 \newblock Вильямс, 2019.
 
 \bibitem{APSP}

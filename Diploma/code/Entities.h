@@ -1,12 +1,12 @@
-#pragma once
-
+п»ї#pragma once
 #include <vector>
 
 using std::vector;
 using std::pair;
 
 using edges = vector<pair<int, int>>;
-
+// Сущности, отвечающие 
+// за передачу информации о графах между методами
 enum GraphType
 {
 	None = 0,
@@ -14,7 +14,8 @@ enum GraphType
 	BA = 2,
 	GEOM = 3,
 };
-
+// описание графа в виде набора вершин, 
+// размеров и радиуса графа
 class GraphDescription {
 public:
 	int n, m;
@@ -30,6 +31,8 @@ public:
 	}
 };
 
+// описание результата вычислительного теста
+// параметры генетического алгоритма и значение функции
 class GaTestResult {
 public:
 	GaTestResult() {}

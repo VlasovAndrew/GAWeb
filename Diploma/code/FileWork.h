@@ -1,35 +1,25 @@
-#pragma once
-#include <vector>
-#include <string>
-#include <fstream>
-#include <sstream>
-#include <algorithm>
-
-using std::vector;
-using std::pair;
-using std::make_pair;
-using std::string;
-using std::ifstream;
-using std::exception;
-using std::getline;
-using std::stringstream;
-using std::max;
-
+п»ї// метод для чтения графа из файла
 vector<pair<int, int>> readFromFileWhereEdges(string file, int& N, int& M) {
+	// создание файлового потока
 	ifstream in(file);
+	// ребра графа
 	vector<pair<int, int>> e;
 	string inputLine;
 	int n = 0, m = 0;
+	// построчное чтение файла
 	while (getline(in, inputLine)) {
 		if (inputLine[0] == '%') {
 			continue;
 		}
+		// увеличение счетчика ребер
 		m++;
 		stringstream s(inputLine);
+		// чтение вершин
 		int x, y;
 		s >> x >> y;
-		
+		// увеличение размера графа
 		n = max(n, max(x, y));
+		// перевод в ноль индексацию
 		x--, y--;
 		e.push_back(make_pair(x, y));
 	}
@@ -37,7 +27,8 @@ vector<pair<int, int>> readFromFileWhereEdges(string file, int& N, int& M) {
 	M = m;
 	return e;
 }
-
+// метод для аналогичного чтения
+// файла с графом, в котором на первой строке указаны размеры графа
 vector<pair<int, int>> readFromFileNM(string file, int& N, int& M) {
 	ifstream in(file);
 	vector<pair<int, int>> e;

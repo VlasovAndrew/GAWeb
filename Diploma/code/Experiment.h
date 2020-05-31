@@ -1,0 +1,158 @@
+пїњ//  ласс отвечающий за проведение эксперимента
+class Experiment {
+private:
+	// число тестовых итераций
+	const int ITER = 100;
+	// ѕараметры графа
+	GraphDescription graph;
+	// функци€ дл€ вичислени€ времени работы 
+	// алгортима с заданными параметрами
+	pair<double, double> calculateTimeErrorValue(int popSize, double pm, double pc) {
+		// число ошибок и среднее врем€ работы
+		int error = 0;
+		double sum_time = 0.0;
+		// итеративное выполнение тестов
+		for (int i = 0; i < ITER; i++) {
+			// инициализаци€ графа
+			Graph* g1 = new Graph(graph.n, graph.m, graph.e);
+			// инициализаци€ генетического алгоритма
+			GeneticAlgorithm genAlg(g1, popSize, pc, pm);
+			// замер времени работы алгортима
+			double time = 0.0;
+			// получение найденного радиуса
+			int R = genAlg.getBestResult(time);
+			sum_time += time;
+			// проверка на верно найденный радиус
+			if (R != graph.realR) {
+				error++;
+			}
+			delete g1;
+		}
+		// вычисление среднего времени работы и процента ошибок
+		double avg_time = sum_time / double(ITER);
+		double avg_error = error / double(ITER) * 100.0;
+		return make_pair(avg_time, avg_error);
+	}
+	// запуск алгоритма с одним из измен€ющихс€ параметров
+	// popSize - размер попул€ции, probParam - значение одного из параметров
+	// pmProb - флаг, отвечающий за то какой из параметров передан в качестве фиксированного
+	// true - параметр pm, false - параметр pc
+	pair<vector<GaTestResult>, vector<GaTestResult>> testWithChangebleProb(int popSize, double probParam, bool pmProb) {
+		// шаг, с которым будет перебиратьс€ параметр
+		double step = 0.1;
+		// число итераций дл€ перебора параметров
+		int itarationCount = ceil(1.0 / step);
+		// вывод информации о параметрах
+		cout << "popSize = " << popSize;
+		if (pmProb) {
+		   cout << " pm = " << probParam << endl;
+		}
+		else {
+			cout << " pc = " << probParam << endl;
+ 		}
+		// вывод шапки дл€ данных 
+		if (pmProb) {
+			cout << "pc \t AVG_TIME \t ERROR" << endl;
+		}
+		else {
+			cout << "pm \t AVG_TIME \t ERROR" << endl;
+		}
+		// переменные дл€ хранени€ результатов измерений
+		vector<GaTestResult> time;
+		vector<GaTestResult> error;
+		// перебор одного из параметров
+		for (int i = 0; i <= itarationCount; i++) {
+			double pm, pc;
+			// в зависимости от флага pmProb перебираетс€ или параметр pm или pc
+			if (pmProb) {
+				pm = probParam;
+				pc = i * step;
+			}
+			else {
+				pc = probParam;
+				pm = i * step;
+			}
+			// вычисление среднего времени работы и процента ошибок
+			pair<double, double> metering = this->calculateTimeErrorValue(popSize, pm, pc);
+			double avg_time = metering.first;
+			double error_percent = metering.second;
+			// вывод информации о полученных результатах
+			cout << (pmProb ? pc : pm) << "\t" << avg_time << "\t" << error_percent << endl;
+			time.push_back(GaTestResult(popSize, pm, pc, avg_time));
+			error.push_back(GaTestResult(popSize, pm, pc, error_percent));
+		}
+		// возврат найденных результатов
+		return make_pair(time, error);
+	}
+
+public:
+	Experiment(GraphDescription graph) {
+		srand(time(NULL) % INT_MAX);
+		this->graph = graph;
+	}
+	// “ест с измен€ющимс€ параметром pc
+	pair<vector<GaTestResult>, vector<GaTestResult>> oneDimentionFixedGATest() {
+		// параметры алгоритма дл€ теста
+		int populationN = 20;
+		double pm = 0.4;
+		return this->testWithChangebleProb(populationN, pm, true);
+	}
+	// запуск простого теста с переданными параметрами	
+	pair<double, double> simpleTimeErrorTest(double pm, double pc, int popSize) {
+		return this->calculateTimeErrorValue(popSize, pm, pc);
+	}
+	// запуск алгоритма N4N
+	void simpleNANTest() {
+		// действи€ аналогичны - измер€етс€ среднее 
+		// врем€ работы и процент ошибки
+		int error = 0;
+		double avg_time = 0.0;
+		for (int i = 0; i < ITER; i++) {
+			Graph* g1 = new Graph(graph.n, graph.m, graph.e);
+			cout << "Start OTHER genetic algorithm" << endl;
+			SimpleGeneticAlgorithm sgen(g1, 50, 10, 0.7, 0.1);
+			double time = 0.0;
+			int R = sgen.getBestResult(time);
+			avg_time += time;
+			if (R != graph.realR)
+				error++;
+		}
+		cout << "AVG Time = " << avg_time / double(ITER) << endl;
+		cout << "Error = " << double(error) / double(ITER) << endl;
+	}
+	// тестирование алгоритма с перебор параметров pm и pc 
+	pair<vector<GaTestResult>, vector<GaTestResult>> pmpcGaTest() {
+		int popSize = 20;
+		double step = 0.1;
+		double pm = 0.0;
+		int sectionNumber = ceil(1.0 / step);
+		vector<GaTestResult> time;
+		vector<GaTestResult> error;
+		for (int i = 0; i <= sectionNumber; i++) {
+			pm = i * step;
+			pair<vector<GaTestResult>, vector<GaTestResult>> metrings = this->testWithChangebleProb(popSize, pm, true);
+			time.insert(time.end(), metrings.first.begin(), metrings.first.end());
+			error.insert(error.end(), metrings.second.begin(), metrings.second.end());
+		}
+		return make_pair(time, error);
+	}
+	// тестирование алгоритма с перебором 
+	// размера попул€ции
+	void nGATest() {
+		double pm = 0.2;
+		double pc = 0.3;
+		int maxN = 50;
+		cout << "pm = " << pm << " pc = " << pc << endl;
+		vector<double> time;
+		vector<double> error;
+		for (int popSize = 1; popSize < maxN; popSize++) {
+			pair<double, double> metering = this->calculateTimeErrorValue(popSize, pm, pc);
+			time.push_back(metering.first);
+			error.push_back(metering.second);
+			cout << "(" << popSize << ", " << metering.second << ")" << endl;
+		}
+		for (int i = 0; i < time.size(); i++) {
+			cout << "(" << i + 1 << ", " << time[i] << ")" << endl;
+		}
+	}
+};
