@@ -15,6 +15,19 @@
   Adaption in Natural and Artificial Systems}~/ J.~Holland. "---
 \newblock University of Michigan Press, 1975.
 
+\bibitem{DIAMETR1}
+\selectlanguageifdefined{english}
+\BibTitle{Network Analysis}~/ Ed. by U.~Brandes, T.~Erlebach. "---
+\newblock Springer Berlin Heidelberg, 2005.
+
+\bibitem{SMALL_WORLD}
+\selectlanguageifdefined{english}
+\BibAuthor{Watts,~D.~J.} \BibTitle{Collective dynamics of `small-world'
+  networks}~/ D.~J. Watts, S.~H. Strogatz~// \emph{Nature}. "---
+\newblock jun 1998. "---
+\newblock Vol.~393, no.~6684. "---
+\newblock Pp.~440--442.
+
 \bibitem{CORMEN}
 \selectlanguageifdefined{english}
 \BibAuthor{Кормен,~Т.} \BibTitle{Алгоритмы: построение и анализ}~/ Т.~Кормен.
