@@ -15,29 +15,35 @@
   Adaption in Natural and Artificial Systems}~/ J.~Holland. "---
 \newblock University of Michigan Press, 1975.
 
+\bibitem{PANCHENCO}
+\selectlanguageifdefined{russian}
+\BibAuthor{Панченко,~Т.~В.} \BibTitle{Генетические алгоритмы}~/ Т.~В. Панченко.
+  "---
+\newblock Астрахань: Издательский дом <<Астраханский университет>>, 2007.
+
 \bibitem{DIAMETR1}
 \selectlanguageifdefined{english}
-\BibTitle{Network Analysis}~/ Ed. by U.~Brandes, T.~Erlebach. "---
+\BibTitle{Network Analysis}~/ Ed. by Ulrik Brandes, Thomas Erlebach. "---
 \newblock Springer Berlin Heidelberg, 2005.
 
 \bibitem{SMALL_WORLD}
 \selectlanguageifdefined{english}
-\BibAuthor{Watts,~D.~J.} \BibTitle{Collective dynamics of `small-world'
-  networks}~/ D.~J. Watts, S.~H. Strogatz~// \emph{Nature}. "---
+\BibAuthor{Watts,~Duncan~J.} \BibTitle{Collective dynamics of `small-world'
+  networks}~/ Duncan~J. Watts, Steven~H. Strogatz~// \emph{Nature}. "---
 \newblock jun 1998. "---
 \newblock Vol.~393, no.~6684. "---
 \newblock Pp.~440--442.
 
 \bibitem{CORMEN}
-\selectlanguageifdefined{english}
-\BibAuthor{Кормен,~Т.} \BibTitle{Алгоритмы: построение и анализ}~/ Т.~Кормен.
-  "---
-\newblock Вильямс, 2019.
+\selectlanguageifdefined{russian}
+\BibAuthor{Кормен,~Т.} \BibTitle{Алгоритмы: построение и анализ}~/ Т.~Кормен,
+  Ч.~Лейзерсон, Р.~Ривест, К.~Штайн. "---
+\newblock Москва: Вильямс, 2019.
 
 \bibitem{APSP}
 \selectlanguageifdefined{english}
-\BibAuthor{Chan,~T.~M.} \BibTitle{All-pairs shortest paths for unweighted
-  undirected graphs in $o(mn)$ time}~/ T.~M. Chan~// \emph{ACM Trans.
+\BibAuthor{Chan,~Timothy~M.} \BibTitle{All-pairs shortest paths for unweighted
+  undirected graphs in $o(mn)$ time}~/ Timothy~M. Chan~// \emph{ACM Trans.
   Algorithms}. "---
 \newblock oct 2012. "---
 \newblock Vol.~8, no.~4. "---
@@ -45,14 +51,14 @@
 
 \bibitem{Fast_Approximation}
 \selectlanguageifdefined{english}
-\BibAuthor{Berman,~P.} \BibTitle{Faster approximation of distances in
-  graphs}~// Algorithms and Data Structures~/ Ed. by F.~Dehne, J.-R. Sack,
-  N.~Zeh. "---
+\BibAuthor{Berman,~Piotr}. \BibTitle{Faster approximation of distances in
+  graphs}~// Algorithms and Data Structures~/ Ed. by Frank Dehne,
+  J{\"o}rg-R{\"u}diger Sack, Norbert Zeh. "---
 \newblock Berlin, Heidelberg: Springer Berlin Heidelberg, 2007.
 
 \bibitem{Fast_Radius}
 \selectlanguageifdefined{english}
-\BibAuthor{Roditty,~L.} \BibTitle{Fast approximation algorithms for the
+\BibAuthor{Roditty,~Liam}. \BibTitle{Fast approximation algorithms for the
   diameter and radius of sparse graphs}~// Proceedings of the Forty-fifth
   Annual ACM Symposium on Theory of Computing. "---
 \newblock STOC '13. "---
@@ -79,8 +85,8 @@
 
 \bibitem{Strassen1969}
 \selectlanguageifdefined{english}
-\BibAuthor{Strassen,~V.} \BibTitle{Gaussian elimination is not optimal}~/
-  V.~Strassen~// \emph{Numerische Mathematik}. "---
+\BibAuthor{Strassen,~Volker}. \BibTitle{Gaussian elimination is not optimal}~/
+  Volker Strassen~// \emph{Numerische Mathematik}. "---
 \newblock Aug 1969. "---
 \newblock Vol.~13, no.~4. "---
 \newblock Pp.~354--356.
@@ -104,18 +110,54 @@
 
 \bibitem{BA}
 \selectlanguageifdefined{english}
-\BibAuthor{Albert,~R.} \BibTitle{Statistical mechanics of complex networks}~/
-  R.~Albert, A.-L. Barabasi~// \emph{Reviews of Modern Physics}. "---
+\BibAuthor{Albert,~Reka}. \BibTitle{Statistical mechanics of complex
+  networks}~/ Reka Albert, Albert-Laszlo Barabasi~// \emph{Reviews of Modern
+  Physics}. "---
 \newblock 2002. "---
 \newblock Vol.~74, no.~1. "---
 \newblock Pp.~47--97.
 
 \bibitem{GEOM}
 \selectlanguageifdefined{english}
-\BibAuthor{Gilbert,~E.} \BibTitle{Random plane networks}~/ E.~Gilbert~//
+\BibAuthor{Gilbert,~Edgar}. \BibTitle{Random plane networks}~/ Edgar Gilbert~//
   \emph{Journal of the Society for Industrial and Applied Mathematics}. "---
 \newblock 1961. "---
 \newblock Vol.~9, no.~4. "---
 \newblock Pp.~533--543.
+
+\bibitem{MVC}
+\selectlanguageifdefined{english}
+\BibTitle{Начало работы с ASP.NET MVC 5 [{Э}лектронный ресурс]}. "---
+\newblock
+  URL:~\url{https://docs.microsoft.com/ru-ru/aspnet/mvc/overview/getting-started/introduction/getting-started}
+  (Дата обращения 24.05.2020). Загл. с экр. Яз. рус.
+
+\bibitem{EF6}
+\selectlanguageifdefined{english}
+\BibTitle{Обзор Entity Framework 6 [{Э}лектронный ресурс]}. "---
+\newblock URL:~\url{https://docs.microsoft.com/ru-ru/ef/ef6/} (Дата обращения
+  24.05.2020). Загл. с экр. Яз. рус.
+
+\bibitem{VALIDATIONS}
+\selectlanguageifdefined{english}
+\BibTitle{System.ComponentModel.DataAnnotations Пространство имен
+  [{Э}лектронный ресурс]}. "---
+\newblock
+  URL:~\url{https://docs.microsoft.com/ru-ru/dotnet/api/system.componentmodel.dataannotations?view=netcore-3.1}
+  (Дата обращения 24.05.2020). Загл. с экр. Яз. рус.
+
+\bibitem{FORMS_AUTH}
+\selectlanguageifdefined{english}
+\BibTitle{Класс FormsAuthentication [{Э}лектронный ресурс]}. "---
+\newblock
+  URL:~\url{https://docs.microsoft.com/ru-ru/dotnet/api/system.web.security.formsauthentication?view=netframework-4.8}
+  (Дата обращения 24.05.2020). Загл. с экр. Яз. рус.
+
+\bibitem{Rfc2898DeriveBytes}
+\selectlanguageifdefined{english}
+\BibTitle{Rfc2898DeriveBytes Класс [{Э}лектронный ресурс]}. "---
+\newblock
+  URL:~\url{https://docs.microsoft.com/ru-ru/dotnet/api/system.security.cryptography.rfc2898derivebytes?view=netcore-3.1}
+  (Дата обращения 24.05.2020). Загл. с экр. Яз. рус.
 
 \end{thebibliography}

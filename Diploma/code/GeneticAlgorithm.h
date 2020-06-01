@@ -34,28 +34,30 @@ private:
 	// ћетод отвечающий за старт алгоритма,
 	// принимает ссылку на переменную дл€ записи времени работы алгоритма.
 	void startAlgorithm(double& time) {
+		// число итераций 
 		int stepN = 20;
+		// начало измерени€ времени работы алгоритма
 		double start = clock();
+		// итерационное выполнение алгоритма
 		for (int i = 0; i < stepN; i++) {
 			this->evolutionStep();
 		}
+		// окончание измерени€ времени
 		double finish = clock();
-		string message = "Time of genetic algorithm: ";
+		// вычисление времени работы всего алгоритма
 		time = (finish - start) / CLOCKS_PER_SEC;
-		#ifdef PRINT_TIME
-			cout << "" << (finish - start) / CLOCKS_PER_SEC << endl;
-		#endif
 	}
 
 public:
 	//  онструктор класса, принимает ссылку на граф, размер попул€ции,
 	// веро€тность скрещивани€ и веро€тность мутации
 	GeneticAlgorithm(Graph* g, int popSize, double pC, double pM) {
+		// инициализаци€ внутренних полей класса
 		this->G = g;
 		this->populationSize = popSize;
 		this->crossP = pC;
 		this->mutationP = pM;
-		// √енераци€ начальной попул€ции
+		// √енераци€ случайной начальной попул€ции
 		for (int i = 0; i < popSize; i++) {
 			population.push_back(rand() % g->Size());
 		}
@@ -129,29 +131,44 @@ public:
 	}
 	// метод дл€ эволюционной итерации
 	void evolutionStep() {
+		// скрещивание
 		this->crossing();
+		// селекци€
 		this->makeSelection();
+		// мутаци€
 		this->mutation();
-		#ifdef PRINT_GA
-			this->printPopulation();
-		#endif
 	}
 	// поиск вершины с минимальным эксцентриситетом после работы алгоритма
 	int getBestResult(double& time) {
+		// запуск генетического алгоритма
 		this->startAlgorithm(time);
+		// вектор дл€ хранени€ эксцентриситетов
 		vector<int> e;
+		// поиск эксцентриситетов дл€ всех вершин в попул€ции
 		for (int i = 0; i < population.size(); i++) {
 			int x = G->getEccentricity(population[i]);
 			e.push_back(x);
 		}
-	 	vector<int> ind = getCentralVertex(e);
-		#ifdef PRINT_GA
-			this->printPopulation();
-		#endif
+		// возвращение индексов вершин эксцентриситетов
+	 	vector<int> ind = this->getCentralVertex(e);
+		// возвращение первой из найденной оптимальной вершины
 		return this->G->getEccentricity(population[ind[0]]);
 	}
 	// получение попул€ции
 	vector<int> getPopulation() {
 		return this->population;
+	}
+	// поиск индексов вершин с минимальным эксцентриситетов
+	vector<int> getCentralVertex(vector<int> e) {
+		// минимальный эксцентриситет
+		int minV = *min_element(e.begin(), e.end()); 
+		// выделение индексов минимальных эксцентриситетов
+		vector<int> res;
+		for (int i = 0; i < e.size(); i++) {
+			if (e[i] == minV) {
+				res.push_back(i);
+			}
+		}
+		return res;
 	}
 };

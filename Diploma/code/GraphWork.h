@@ -29,6 +29,7 @@ private:
 	vector<vector<vector<int>>> path;
 	// флаги на найденные эксцентриситеты
 	vector<bool> calculatedEccentricity;
+	// вектор с эксцентриситетами
 	vector<int> eccentricity;
 	
 	void initializeMatrix() {

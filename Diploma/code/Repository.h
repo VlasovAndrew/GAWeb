@@ -1,25 +1,4 @@
-п»ї#pragma once
-
-#include <fstream>
-#include <map>
-#include <sstream>
-#include <iomanip>
-#include <algorithm>
-
-#include "GraphWork.h"
-#include "GeneticAlgorithm.h"
-#include "OtherGA.h"
-#include "FileWork.h"
-#include "Entities.h"
-
-using std::make_pair;
-using std::ifstream;
-using std::stringstream;
-
-using std::pair;
-
-
-class Repository {
+п»їclass Repository {
 private:
 	struct GraphParams
 	{
@@ -34,6 +13,7 @@ private:
 	vector<int> RADIUS_BA = { 4, 4, 5, 4, 5, 5, 5 };
 	vector<int> RADIUS_GEOM = { 9, 9, 8, 8, 8, 8, 8 };
 	vector<int> RADIUS_ER = { 5, 4, 4, 4, 3, 3, 3 };
+	// Номер теста графа
 	int TEST = 4;
 
 	// Названия файлов с графами
@@ -68,6 +48,8 @@ private:
 	GraphParams getGraphData(string graphType) {
 		string fileName;
 		int real_r = 0;
+		// проверка параметра и выбор файла 
+		// в зависимости от параметра
 		if (graphType == "BA_GRAPH") {
 			fileName = BA_FILE[TEST];
 			real_r = RADIUS_BA[TEST];

@@ -120,17 +120,26 @@ public:
 		cout << "AVG Time = " << avg_time / double(ITER) << endl;
 		cout << "Error = " << double(error) / double(ITER) << endl;
 	}
-	// тестирование алгоритма с перебор параметров pm и pc 
+	// тестирование алгоритма с перебором параметров pm и pc 
 	pair<vector<GaTestResult>, vector<GaTestResult>> pmpcGaTest() {
+		// размер популяции
 		int popSize = 20;
+		// шаг для параметров
 		double step = 0.1;
+		// началные значения
 		double pm = 0.0;
+		// число итераций
 		int sectionNumber = ceil(1.0 / step);
+		// результаты измерений времени
 		vector<GaTestResult> time;
+		// результаты измерений ошибок
 		vector<GaTestResult> error;
+		// перебор параметров
 		for (int i = 0; i <= sectionNumber; i++) {
 			pm = i * step;
+			// получение результатов тестов по второму параметру
 			pair<vector<GaTestResult>, vector<GaTestResult>> metrings = this->testWithChangebleProb(popSize, pm, true);
+			// добавление результатов тестов
 			time.insert(time.end(), metrings.first.begin(), metrings.first.end());
 			error.insert(error.end(), metrings.second.begin(), metrings.second.end());
 		}
@@ -139,18 +148,25 @@ public:
 	// тестирование алгоритма с перебором 
 	// размера популяции
 	void nGATest() {
+		// начальные значения вероятностей
 		double pm = 0.2;
 		double pc = 0.3;
+		// максимальное значение для размера популяции
 		int maxN = 50;
+		// вывод информации о параметрах
 		cout << "pm = " << pm << " pc = " << pc << endl;
 		vector<double> time;
 		vector<double> error;
+		// перебор размеров популяции
 		for (int popSize = 1; popSize < maxN; popSize++) {
+			// вычисление размеров и временных затрат
 			pair<double, double> metering = this->calculateTimeErrorValue(popSize, pm, pc);
 			time.push_back(metering.first);
 			error.push_back(metering.second);
+			// вывод информации на экран
 			cout << "(" << popSize << ", " << metering.second << ")" << endl;
 		}
+		// вывод информации о времени работы
 		for (int i = 0; i < time.size(); i++) {
 			cout << "(" << i + 1 << ", " << time[i] << ")" << endl;
 		}

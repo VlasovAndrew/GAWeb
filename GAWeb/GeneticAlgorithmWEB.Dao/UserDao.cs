@@ -16,10 +16,12 @@ namespace GeneticAlgorithmWEB.Dao
         // Сохраняет нового пользователя в базе данных.
         public User Add(User user)
         {
+            // Добавление нового пользователя
             using (UserContext context = new UserContext())
             {
                 User res = context.Users.Add(user);
                 context.SaveChanges();
+                // возвращение пользователя с заполненным Id
                 return res;
             }
         }
@@ -28,6 +30,7 @@ namespace GeneticAlgorithmWEB.Dao
         {
             using (UserContext context = new UserContext())
             {
+                // поиск пользователя с заданным Id
                 return context.Users.Where(u => u.Id == id).FirstOrDefault();
             }
         }
@@ -36,6 +39,7 @@ namespace GeneticAlgorithmWEB.Dao
         {
             using (UserContext context = new UserContext())
             {
+                // поиск пользователя с заданным логином
                 return context.Users.Where(u => u.Login == name).FirstOrDefault();
             }
         }
