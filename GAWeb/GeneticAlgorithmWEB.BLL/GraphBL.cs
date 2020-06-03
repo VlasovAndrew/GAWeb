@@ -12,7 +12,9 @@ namespace GeneticAlgorithmWEB.BLL
     // Реализут работу с графами.
     public class GraphBL : IGraphBL
     {
+        // Ссылка на объект, реализующий доступ к графам
         private readonly IGraphDao _graphDao;
+        // максимальный размер графа
         private readonly int _maxN = 2500;
 
         public GraphBL(IGraphDao graphDao)
@@ -35,9 +37,12 @@ namespace GeneticAlgorithmWEB.BLL
             {
                 throw new FormatException("Граф должен быть связаным");
             }
+            // Работа точного алгоритма
             ExactAlgorithmCore exactAlgorithm = new ExactAlgorithmCore();
+            // нахождение реального радиуса графа при помощи точного алгоритма
             int R = exactAlgorithm.FindRadius(context);
             graph.R = R;
+            // добавление нового графа
             return _graphDao.Add(graph);
         }
 
@@ -47,6 +52,7 @@ namespace GeneticAlgorithmWEB.BLL
             return _graphDao.GetAllGraphInfo();
         }
 
+        // Получение графа по Id
         public Graph GetById(int id) {
             return _graphDao.GetById(id);
         }

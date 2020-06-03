@@ -1,4 +1,12 @@
-п»їnamespace GeneticAlgorithmWEB.BLL
+п»їusing System;
+using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace GeneticAlgorithmWEB.Encrypt
 {
     // Класс отвечающий за хеширование паролей и их проверку.
     public class Encryption
@@ -30,7 +38,7 @@
             byte[] hash = pbkdf2.GetBytes(hashSize);
             // Выделение памяти под результат.
             byte[] result = new byte[saltSize + hashSize];
-            // КОпирование соли и хеша в единый массив данных.
+            // Копирование соли и хеша в единый массив данных.
             Array.Copy(salt, 0, result, 0, saltSize);
             Array.Copy(hash, 0, result, saltSize, hashSize);
             return result;
@@ -46,7 +54,7 @@
             if (hashedPassword.Length != realPassword.Length) {
                 throw new ArgumentException("Длина реального хеша не совпадет с длиной хеша из базы данных");
             }
-            // ПОбайтовая проверка на соответствие пароля и хеша.
+            // Побайтовая проверка на соответствие пароля и хеша.
             for (int i = 0; i < hashedPassword.Length; i++) {
                 if (hashedPassword[i] != realPassword[i]) {
                     return false;
@@ -54,13 +62,14 @@
             }
             return true;
         }
-        // Выделение хеша из массива байтов.
+        // Выделение "соли" из массива байтов.
         private byte[] GetSaltFromHash(byte[] hash)
         {
+            // создание массива байт 
             byte[] salt = new byte[saltSize];
+            // копирование в этот массив элементов из хеша
             Array.Copy(hash, 0, salt, 0, saltSize);
             return salt;
         }
-
     }
 }

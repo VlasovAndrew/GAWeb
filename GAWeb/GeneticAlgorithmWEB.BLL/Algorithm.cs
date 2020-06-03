@@ -30,25 +30,31 @@ namespace GeneticAlgorithmWEB.BLL
         // Алгоритм запускается с фиксированными параметрами мутации, скрещивания и размер популяции.
         public FindingVertexResponse FindCentralVertex(Graph graph)
         {
+            // поиск центральных вершин при помощи генетического алгоритма с заданными параметрами
             GeneticAlgorithmCore ga = new GeneticAlgorithmCore(graph, _fixedPopSize, _fixedPM, _fixedPC);
             return ga.StartAlgorithm();
         }
         // Иссдедование алгоритма с переданными параметрами.
         public ResearchAlgorithmResponse ResearchAlgorithm(ResearchRequest param) {
             Graph graph = _graphBL.GetById(param.GraphId);
-            
             double avgTime = 0.0;
             int error = 0;
-            // Многократный запуск алгоритма для оценки времени работы и процента ошибок.
+            // Инициализация алгоритма с переданными параметрами.
             GeneticAlgorithmCore ga = new GeneticAlgorithmCore(graph, param.PopulationSize, param.Pm, param.Pc);
+            // Многократный запуск алгоритма для оценки времени работы и процента ошибок.
             for (int i = 0; i < _testCount; i++) 
             {
+                // Запуск алгоритма и получение результатов 
                 FindingVertexResponse algResult = ga.StartAlgorithm();
+                // проверка на верность найденного решения
                 if (algResult.R != graph.R) {
                     error++;
                 }
+                // увеличение суммарного времени работы 
                 avgTime += algResult.Time;
             }
+            // возвращение результата в виде среднего 
+            // значения времени работы и процента неверных ответов
             return new ResearchAlgorithmResponse() {
                 AvgTime = avgTime / _testCount,
                 Error = error / (double)_testCount * 100.0,
