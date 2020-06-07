@@ -9,18 +9,6 @@
 \ifx\undefined\BibAnnote\def\BibAnnote#1{}\else\fi
 \ifx\undefined\BibSection\def\BibSection#1#2#3{}\else\fi
 
-\bibitem{HOLLAND}
-\selectlanguageifdefined{english}
-\BibAuthor{Holland,~J.} \BibTitle{Adaption in Natural and Artificial Systems
-  Adaption in Natural and Artificial Systems}~/ J.~Holland. "---
-\newblock University of Michigan Press, 1975.
-
-\bibitem{PANCHENCO}
-\selectlanguageifdefined{russian}
-\BibAuthor{Панченко,~Т.~В.} \BibTitle{Генетические алгоритмы}~/ Т.~В. Панченко.
-  "---
-\newblock Астрахань: Издательский дом <<Астраханский университет>>, 2007.
-
 \bibitem{DIAMETR1}
 \selectlanguageifdefined{english}
 \BibTitle{Network Analysis}~/ Ed. by Ulrik Brandes, Thomas Erlebach. "---
@@ -91,6 +79,18 @@
 \newblock Vol.~13, no.~4. "---
 \newblock Pp.~354--356.
 
+\bibitem{HOLLAND}
+\selectlanguageifdefined{english}
+\BibAuthor{Holland,~J.} \BibTitle{Adaption in Natural and Artificial Systems
+  Adaption in Natural and Artificial Systems}~/ J.~Holland. "---
+\newblock University of Michigan Press, 1975.
+
+\bibitem{PANCHENCO}
+\selectlanguageifdefined{russian}
+\BibAuthor{Панченко,~Т.~В.} \BibTitle{Генетические алгоритмы}~/ Т.~В. Панченко.
+  "---
+\newblock Астрахань: Издательский дом <<Астраханский университет>>, 2007.
+
 \bibitem{GA_N4N}
 \selectlanguageifdefined{english}
 \BibAuthor{{Alkhalifah},~Y.} \BibTitle{A genetic algorithm applied to graph
@@ -124,6 +124,12 @@
 \newblock 1961. "---
 \newblock Vol.~9, no.~4. "---
 \newblock Pp.~533--543.
+
+\bibitem{ADAM_FRIMAN}
+\selectlanguageifdefined{russian}
+\BibAuthor{Фримен,~A.} \BibTitle{ASP.NET MVC 5 Framework с примерами на C\# для
+  профессионалов}~/ A.~Фримен. "---
+\newblock Вильямс, 2015.
 
 \bibitem{MVC}
 \selectlanguageifdefined{english}
