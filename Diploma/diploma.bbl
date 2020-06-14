@@ -166,4 +166,12 @@
   URL:~\url{https://docs.microsoft.com/ru-ru/dotnet/api/system.security.cryptography.rfc2898derivebytes?view=netcore-3.1}
   (Дата обращения 24.05.2020). Загл. с экр. Яз. рус.
 
+\bibitem{Vlasov2019}
+\selectlanguageifdefined{english}
+\BibAuthor{Vlasov,~Andrew}. \BibTitle{Ball-shrinking genetic search algorithm
+  for finding central vertices in graphs}~// Fourth Workshop on Computer
+  Modelling in Decision Making (CMDM 2019). "---
+\newblock Atlantis Press, 2019. "---
+\newblock Pp.~94--97. \BibUrl{https://doi.org/10.2991/ahcs.k.191206.017}.
+
 \end{thebibliography}
